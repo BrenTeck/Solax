@@ -1,0 +1,164 @@
+#sencors
+sensor:
+#Solax
+  - platform: rest
+    resource: !secret solaxCloudUrl
+    method: GET
+    name: "Solax acpower"
+    value_template: '{{ value_json["result"].acpower | int }}'
+#   Solax yieldtoday
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    name: "Solax yieldtoday"
+#    value_template: '{{ value_json["result"].yieldtoday | int }}'
+#    scan_interval: 300
+##   Solax yieldtotal
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    name: "Solax yieldtotal"
+#    value_template: '{{ value_json["result"].yieldtotal | int }}'
+#    Solax feedinpower
+#    scan_interval: 210
+  - platform: rest
+    resource: !secret solaxCloudUrl
+    method: GET
+    name: "Solax feedinpower"
+    value_template: '{{ value_json["result"].feedinpower | int }}'
+#    scan_interval: 60
+#    Solax feedinenergy
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    name: "Solax feedinenergy"
+#    value_template: '{{ value_json["result"].feedinenergy | int }}'
+#    scan_interval: 60
+#    Solax consumeenergy
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    name: "Solax consumeenergy"
+#    value_template: '{{ value_json["result"].consumeenergy | int }}'
+#    scan_interval: 60
+#    Solax feedinpowerM2 !PV aray!
+  - platform: rest
+    resource: !secret solaxCloudUrl
+    method: GET
+    name: "Solax feedinpowerM2"
+    value_template: '{{ value_json["result"].feedinpowerM2 | int }}'
+#    scan_interval: 60
+#    Solax Battery %
+  - platform: rest
+    resource: !secret solaxCloudUrl
+    method: GET
+    name: "Solax Battery %"
+    value_template: '{{ value_json["result"].soc | int }}'
+    scan_interval: 210
+#    scan_interval: 6
+##    Solax inverterType
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    name: "Solax inverterType"
+#    value_template: '{{ value_json["result"].inverterType | int }}'
+##    Solax inverterStatus
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    name: "Solax inverterStatus"
+#    value_template: '{{ value_json["result"].inverterStatus | int }}'
+##    Solax uploadTime
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    name: "Solax uploadTime"
+#    value_template: '{{ value_json["result"].uploadTime }}'
+##    Solax batPower
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    name: "Solax batPower"
+#    value_template: '{{ value_json["result"].batPower | int }}'
+#    scan_interval: 60
+# Example configuration.yaml entry
+###  - platform: rest
+#    resource: !secret solaxCloudUrl
+#  - authentication: basic
+#    username: "admin"
+#    password: "password"
+#    scan_interval: 60
+#    resource: !secret solaxCloudUrl
+#    sensor:
+#      - name: "Solex Inverter"
+#        json_attributes_path: "$.response.system"
+#        json_attributes_path: "$.response.system"
+#        value_template: "OK"
+#        json_attributes:
+#          - "acpower"
+#          - "yieldtoday"
+#          - "yieldtotal"
+#          - "feedinpower"
+#          - "feedinenergy"
+#          - "consumeenergy"
+#          - "feedinpowerM2"
+#          - "soc"
+#          - "inverterType"
+#          - "inverterStatus"
+#          - "uploadTime"
+#          - "batPower"
+######
+#  - platform: rest
+#    resource: !secret solaxCloudUrl
+#    method: GET
+#    payload: '{ "acpower" : "yieldtoday" : "yieldtotal" : "feedinpower" : "feedinenergy" : "consumeenergy" : "feedinpowerM2" : "soc" : "inverterType" : "inverterStatus" : "uploadTime" : "batPower" }'
+#    payload: '{ 'acpower' : 'yieldtoday' : 'yieldtotal' : 'feedinpower' : 'feedinenergy' : 'consumeenergy' : 'feedinpowerM2' : 'soc' : 'inverterType' : 'inverterStatus' : 'uploadTime' : 'batPower' }'  
+#    scan_interval: 60
+#  - platform: rest
+#    name: Solex Inverter
+#    resource: !secret solaxCloudUrl
+#    json_attributes_path: "$.response"
+#    scan_interval: 60
+#    value_template: "OK"
+#    json_attributes:
+#      - "acpower"
+#      - "yieldtoday"
+#      - "yieldtotal"
+#      - "feedinpower"
+#      - "feedinenergy"
+#      - "consumeenergy"
+#      - "feedinpowerM2"
+#      - "soc"
+#      - "inverterType"
+#      - "inverterStatus"
+#      - "uploadTime"
+#      - "batPower"
+#  - platform: template
+#    sensors:
+#       steam_int:
+#        friendly_name: feedinpowerM2
+#        value_template: '{{ "feedinpowerM2" }}'
+#        unit_of_measurement: "KWh"
+#       steam_int:
+#        friendly_name: soc
+#        value_template: '{{ value_json["result"].soc }}'
+#        unit_of_measurement: "%"    
+#sensor:
+#  - platform: rest
+#    name: Solex Inverter
+#    json_attributes:
+#      - feedinpowerM2
+#      - soc
+#    resource: !secret solaxCloudUrl
+#    value_template: "{{ value_json[] }}"
+#  - platform: template
+#    sensors:
+#      feedinpowerM2:
+#        friendly_name: "feedinpowerM2"
+#        value_template: "{{ feedinpowerM2, 'feedinpowerM2' }}"
+#      soc:
+#        friendly_name: "soc"
+#        value_template: "{{ value_json[result].soc }}"
+        #value_template: "{{ state_attr('sensor.steam_system_data', 'time0') }}"
+#endSolax    
+#endSencors
