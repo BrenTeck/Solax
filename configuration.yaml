@@ -160,5 +160,4 @@ sensor:
 #        friendly_name: "soc"
 #        value_template: "{{ value_json[result].soc }}"
         #value_template: "{{ state_attr('sensor.steam_system_data', 'time0') }}"
-#endSolax    
-#endSencors
+#endSolax
