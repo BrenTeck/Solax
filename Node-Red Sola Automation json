@@ -818,7 +818,7 @@
         "type": "function",
         "z": "ef064dcac3e82263",
         "name": "acData",
-        "func": "var pvPower=flow.get(\"pvState\");\nvar feedin=flow.get(\"feedin\");\ncontext.set(\"tempAcPowerState\", msg.payload);\nvar tempAcPowerState = context.get(\"tempAcPowerState\");\nflow.set(\"acPowerUsed\", pvPower + tempAcPowerState - feedin);\nmsg.payload = \"acPowerUsed\";\nreturn msg;",
+        "func": "var pvPower=flow.get(\"pvState\");\nvar feedin=flow.get(\"feedin\");\ncontext.set(\"tempAcPowerState\", msg.payload);\nvar tempAcPowerState=context.get(\"tempAcPowerState\");\nflow.set(\"acPowerUsed\", pvPower + tempAcPowerState - feedin);\nmsg.payload = \"acPowerUsed\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
