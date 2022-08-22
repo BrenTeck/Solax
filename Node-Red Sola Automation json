@@ -1,10 +1,824 @@
 [
     {
+        "id": "ef064dcac3e82263",
+        "type": "tab",
+        "label": "Sola Automation",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7e3235d62ba0d85a",
+        "type": "switch",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Go",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Stop",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1090,
+        "y": 200,
+        "wires": [
+            [
+                "29f5c308988516fb",
+                "d92bea61652717e5"
+            ],
+            [
+                "29f5c308988516fb",
+                "d92bea61652717e5"
+            ]
+        ]
+    },
+    {
+        "id": "77c1d8ffe529a8df",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Immersion_heater_on",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.immersion_heater_on_r_1f_tp60"
+        ],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1680,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "38dfe938c4c5a14f",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Immersion_heater_off",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.immersion_heater_off_r_1f_tp50"
+        ],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1680,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c609de45a80d6fae",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Go",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Go",
+        "payloadType": "str",
+        "x": 930,
+        "y": 180,
+        "wires": [
+            [
+                "7e3235d62ba0d85a"
+            ]
+        ]
+    },
+    {
+        "id": "026228fb6ecf9f3c",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Stop",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Stop",
+        "payloadType": "str",
+        "x": 930,
+        "y": 220,
+        "wires": [
+            [
+                "7e3235d62ba0d85a"
+            ]
+        ]
+    },
+    {
+        "id": "74616157824db59c",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Immersion_heater_off",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.immersion_heater_off_r_1f_tp50"
+        ],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1460,
+        "y": 160,
+        "wires": [
+            [
+                "77c1d8ffe529a8df"
+            ]
+        ]
+    },
+    {
+        "id": "bddc8c06ca95ce25",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Immersion_heater_on",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.immersion_heater_on_r_1f_tp60"
+        ],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1460,
+        "y": 240,
+        "wires": [
+            [
+                "38dfe938c4c5a14f"
+            ]
+        ]
+    },
+    {
+        "id": "499c0fdf1c3a2142",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "debugOn",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ee0859a551059616",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "debugOff",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "29f5c308988516fb",
+        "type": "trigger",
+        "z": "ef064dcac3e82263",
+        "name": "offOnce",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "Go",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1260,
+        "y": 240,
+        "wires": [
+            [
+                "bddc8c06ca95ce25",
+                "ee0859a551059616"
+            ]
+        ]
+    },
+    {
+        "id": "d92bea61652717e5",
+        "type": "trigger",
+        "z": "ef064dcac3e82263",
+        "name": "onOnce",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "Stop",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1260,
+        "y": 160,
+        "wires": [
+            [
+                "74616157824db59c",
+                "499c0fdf1c3a2142"
+            ]
+        ]
+    },
+    {
+        "id": "22f1146345b869b2",
+        "type": "change",
+        "z": "ef064dcac3e82263",
+        "name": "cleans all var",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "OACurrentRate",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "acPowerUsed",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "autoSpa",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "batteryState",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "batteryState",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "feedin",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "immersionHeaterBoost",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "pvState",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "spaTarget",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "spaTemp",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "time",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "useSpa",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1070,
+        "y": 120,
+        "wires": [
+            [
+                "d8e80a95acf28154"
+            ]
+        ]
+    },
+    {
+        "id": "d8e80a95acf28154",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2dda09d614898508",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 920,
+        "y": 120,
+        "wires": [
+            [
+                "22f1146345b869b2"
+            ]
+        ]
+    },
+    {
+        "id": "e1f383b7d9d178cc",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Bat>80",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "90",
+        "payloadType": "num",
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "29102b50f2ceeb9a"
+            ]
+        ]
+    },
+    {
+        "id": "a165b7b793d2b15b",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Bat<65",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "50",
+        "payloadType": "num",
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "29102b50f2ceeb9a"
+            ]
+        ]
+    },
+    {
+        "id": "29102b50f2ceeb9a",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "batData",
+        "func": "flow.set(\"batteryState\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "8341a4a6aa03a29a",
+                "17078f87b2652de3"
+            ]
+        ]
+    },
+    {
+        "id": "8341a4a6aa03a29a",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "testDebug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e008c37c89c45a2e",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "PV<2000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1999",
+        "payloadType": "num",
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "9e5e70ef325e0c7d"
+            ]
+        ]
+    },
+    {
+        "id": "9e5e70ef325e0c7d",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "pvData",
+        "func": "flow.set(\"pvState\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 200,
+        "wires": [
+            [
+                "16f54f0961f82b35",
+                "17078f87b2652de3"
+            ]
+        ]
+    },
+    {
+        "id": "428eea276333c478",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "PV>=2000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2001",
+        "payloadType": "num",
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "9e5e70ef325e0c7d"
+            ]
+        ]
+    },
+    {
+        "id": "16f54f0961f82b35",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "testPVDebug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "17078f87b2652de3",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "immersionFunction",
+        "func": "var pvPower=flow.get(\"pvState\");\nvar battery=flow.get(\"batteryState\");\nvar feed=flow.get(\"feedin\");\nvar timeNow=flow.get(\"time\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar immersionHeaterBoost = flow.get(\"immersionHeaterBoost\");\n\nif (OACurrentRate <= '0' && battery <= '10') {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate > '0' && battery > '10') {\n    if (immersionHeaterBoost == \"active\"){\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else {\n//    else if (immersionHeaterBoost != \"active\"){    \n        if (timeNow >= '6' && timeNow <= '13') {\n            if (pvPower >= '2000') {\n                if (battery >= '30') {\n                    if (feed >= '-2000') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= '-2000') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '14' && timeNow <= '19') {\n            if (pvPower >= '2000') {\n                if(battery >= '80') {\n                    if(feed >= '-2000') {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '64') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if(battery >= '65') {\n                    if(feed >= '-2000') {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '50') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload=\"Stop\";\n                return msg;\n            }\n        }\n        else {\n            msg.payload = \"Stop\";\n            return msg;\n        }\n    }\n}\nelse {\n    msg.payload=\"Stop\";\n    return msg;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 200,
+        "wires": [
+            [
+                "7e3235d62ba0d85a"
+            ]
+        ]
+    },
+    {
+        "id": "9980f17cadd4d14d",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Bat<80 >65",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "75",
+        "payloadType": "num",
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "29102b50f2ceeb9a"
+            ]
+        ]
+    },
+    {
+        "id": "9be546b04540ef20",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "feedin>=5000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5000",
+        "payloadType": "num",
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "ff6fe67dfb0a7144"
+            ]
+        ]
+    },
+    {
+        "id": "07911ce45977d864",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "feedin<2000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-2999",
+        "payloadType": "num",
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "ff6fe67dfb0a7144"
+            ]
+        ]
+    },
+    {
+        "id": "ff6fe67dfb0a7144",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "feedin",
+        "func": "flow.set(\"feedin\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "17078f87b2652de3",
+                "049c106f10c0c707"
+            ]
+        ]
+    },
+    {
+        "id": "049c106f10c0c707",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "testfeedin",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2675eefae62a5d9f",
+        "type": "server-state-changed",
+        "z": "ef064dcac3e82263",
+        "name": "Solax acpower",
+        "server": "315411fb.df557e",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.solax_acpower",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "a0f6a7e4898d6f64",
+                "11e8b37f394ef426"
+            ]
+        ]
+    },
+    {
+        "id": "a0f6a7e4898d6f64",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "test acpower",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 380,
+        "wires": []
+    },
+    {
         "id": "11e8b37f394ef426",
         "type": "function",
         "z": "ef064dcac3e82263",
         "name": "acData",
-        "func": "var pvPower=flow.get(\"pvState\");\nvar feedin=flow.get(\"feedin\");\n//context.set(\"tempAcPowerState\",msg.payload);\n//var tempAcPowerState context.set(msg.payload);\nvar tempAcPowerState=context.set(msg.payload);\n//flow.set(\"acPowerUsed\", pvPower + msg.payload - feedin);\nflow.set(\"acPowerUsed\", pvPower + tempAcPowerState - feedin);\nmsg.payload = \"acPowerUsed\";\nreturn msg;",
+        "func": "var pvPower=flow.get(\"pvState\");\nvar feedin=flow.get(\"feedin\");\ncontext.set(\"tempAcPowerState\", msg.payload);\nvar tempAcPowerState = context.get(\"tempAcPowerState\");\nflow.set(\"acPowerUsed\", pvPower + tempAcPowerState - feedin);\nmsg.payload = \"acPowerUsed\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -17,5 +831,1852 @@
                 "2f1a581dacfa5674"
             ]
         ]
+    },
+    {
+        "id": "2f1a581dacfa5674",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "debugAcUsed",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3e74841853f9711c",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "acPower<65",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "50",
+        "payloadType": "num",
+        "x": 310,
+        "y": 440,
+        "wires": [
+            [
+                "11e8b37f394ef426"
+            ]
+        ]
+    },
+    {
+        "id": "d63cfeb44f8ab9b1",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "acPower>80",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "81",
+        "payloadType": "num",
+        "x": 310,
+        "y": 400,
+        "wires": [
+            [
+                "11e8b37f394ef426"
+            ]
+        ]
+    },
+    {
+        "id": "a306d002632720c7",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "time",
+        "func": "flow.set(\"time\", Number(msg.payload));\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 560,
+        "wires": [
+            [
+                "17078f87b2652de3",
+                "eff5bdc25ed57057",
+                "136ce3780b1b351c"
+            ]
+        ]
+    },
+    {
+        "id": "543980d952192105",
+        "type": "moment",
+        "z": "ef064dcac3e82263",
+        "name": "Time",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "Europe/London",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "HH",
+        "locale": "C",
+        "output": "",
+        "outputType": "msg",
+        "outTz": "Europe/London",
+        "x": 330,
+        "y": 560,
+        "wires": [
+            [
+                "a306d002632720c7"
+            ]
+        ]
+    },
+    {
+        "id": "013e8eae40448f15",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 560,
+        "wires": [
+            [
+                "543980d952192105"
+            ]
+        ]
+    },
+    {
+        "id": "eff5bdc25ed57057",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "test time",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "4a400c517b074cd4",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1320,
+        "y": 760,
+        "wires": [
+            [
+                "91b035ba631580a7"
+            ]
+        ]
+    },
+    {
+        "id": "5f8da77a67547f51",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1320,
+        "y": 700,
+        "wires": [
+            [
+                "f39939df163c05aa"
+            ]
+        ]
+    },
+    {
+        "id": "91b035ba631580a7",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Bubbles Off",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.spa_bubbles"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1510,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "136ce3780b1b351c",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "spaFunction",
+        "func": "var pvPower = flow.get(\"pvState\");\nvar battery = flow.get(\"batteryState\");\nvar feed = flow.get(\"feedin\");\nvar timeNow = flow.get(\"time\");\nvar useSpa = flow.get(\"useSpa\");\nvar autoSpa = flow.get(\"autoSpa\");\nvar spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\n//var spaTargetTemp = flow.get(\"spaTarget\");\n\n\nif (useSpa === \"on\") {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"off\") {\n    if (OACurrentRate <= '0' && battery <= '10') {\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else if (OACurrentRate > '0') {\n        if (autoSpa === \"on\") {\n            if (timeNow >= '12' && timeNow < '14') {\n                if (pvPower >= '2000') {\n                    if (battery >= '40') {\n                        if (feed >= '-2000') {\n                            if (spaTemp <= spaTarget) {\n                                msg.payload = \"Go\";\n                                return msg;\n                            }\n                            else {\n                                msg.payload = \"Stop\";\n                                return msg;\n                            }\n                        }\n                        else {\n                            msg.payload = \"Stop\";\n                            return msg;\n                        }\n                    }\n                    if (battery <= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (pvPower >= '3000') {\n                    if (battery >= '65') {\n                        if (feed >= '-2000') {\n                            if (spaTemp <= spaTarget) {\n                                msg.payload = \"Go\";\n                                return msg;\n                            }\n                            else {\n                                msg.payload = \"Stop\";\n                                return msg;\n                            }\n                        }\n                        else {\n                            msg.payload = \"Stop\";\n                            return msg;\n                        }\n                    }\n                    if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (timeNow > '14' && timeNow < '20') {\n                if (pvPower >= '2000') {\n                    if (battery >= '80') {\n                        if (feed >= '-2000') {\n                            if (spaTemp <= spaTarget) {\n                                msg.payload = \"Go\";\n                                return msg;\n                            }\n                            else\n                                msg.payload = \"Stop\";\n                            return msg;\n                        }\n                        else {\n                            msg.payload = \"Stop\";\n                            return msg;\n                        }\n                    }\n                    if (battery <= '64') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (pvPower >= '3000') {\n                    if (battery >= '65') {\n                        if (feed >= '-2000') {\n                            if (spaTemp <= spaTarget) {\n                                msg.payload = \"Go\";\n                                return msg;\n                            }\n                            else\n                                msg.payload = \"Stop\";\n                            return msg;\n                        }\n                        else {\n                            msg.payload = \"Stop\";\n                            return msg;\n                        }\n                    }\n                    if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload = \"Stop\";\n            }\n            return msg;\n        }\n        else if (autoSpa === \"off\") {\n            msg.payload = \"Stop\";\n        }\n    }\n}\nelse {\n    msg.payload = \"Stop\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 840,
+        "wires": [
+            [
+                "42917a1eab231322"
+            ]
+        ]
+    },
+    {
+        "id": "f39939df163c05aa",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Bubbles On",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.spa_bubbles"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1510,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cb92f8c849aaa1eb",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Filter On",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.spa_filter"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1500,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5ddc02ce4ed376a9",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Filter Off",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.spa_filter"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1500,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26530828189d6db2",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1320,
+        "y": 880,
+        "wires": [
+            [
+                "5ddc02ce4ed376a9"
+            ]
+        ]
+    },
+    {
+        "id": "20e5a119e3482442",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1320,
+        "y": 820,
+        "wires": [
+            [
+                "cb92f8c849aaa1eb"
+            ]
+        ]
+    },
+    {
+        "id": "b15b251781217f6e",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Heat Off",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "climate.spa_thermostat"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1500,
+        "y": 1000,
+        "wires": [
+            [
+                "5ddc02ce4ed376a9"
+            ]
+        ]
+    },
+    {
+        "id": "0ad562560317d5f4",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1320,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d2c1d0121d84bbfd",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "Heat On",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "climate.spa_thermostat"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1500,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5208a45a65704d65",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1320,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bfc6b41f133a8d41",
+        "type": "switch",
+        "z": "ef064dcac3e82263",
+        "name": "bubbles",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Go",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Stop",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 820,
+        "y": 760,
+        "wires": [
+            [
+                "132a4f23aac4e14c",
+                "fc41189e019c4802"
+            ],
+            [
+                "132a4f23aac4e14c",
+                "fc41189e019c4802"
+            ]
+        ]
+    },
+    {
+        "id": "61d290884df406ab",
+        "type": "switch",
+        "z": "ef064dcac3e82263",
+        "name": "filter",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Go",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Stop",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 800,
+        "wires": [
+            [
+                "78439146bad9b5f0",
+                "66a144e354b752d0"
+            ],
+            [
+                "78439146bad9b5f0",
+                "66a144e354b752d0"
+            ]
+        ]
+    },
+    {
+        "id": "42917a1eab231322",
+        "type": "switch",
+        "z": "ef064dcac3e82263",
+        "name": "Heat",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Go",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Stop",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 840,
+        "wires": [
+            [
+                "620b80de8196da97",
+                "200ea5c93c35a7cd"
+            ],
+            [
+                "200ea5c93c35a7cd",
+                "620b80de8196da97"
+            ]
+        ]
+    },
+    {
+        "id": "fc41189e019c4802",
+        "type": "trigger",
+        "z": "ef064dcac3e82263",
+        "name": "offOnce",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "Go",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1060,
+        "y": 760,
+        "wires": [
+            [
+                "91b035ba631580a7"
+            ]
+        ]
+    },
+    {
+        "id": "132a4f23aac4e14c",
+        "type": "trigger",
+        "z": "ef064dcac3e82263",
+        "name": "onOnce",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "Stop",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1060,
+        "y": 720,
+        "wires": [
+            [
+                "f39939df163c05aa"
+            ]
+        ]
+    },
+    {
+        "id": "78439146bad9b5f0",
+        "type": "trigger",
+        "z": "ef064dcac3e82263",
+        "name": "onOnce",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "Stop",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1060,
+        "y": 800,
+        "wires": [
+            [
+                "cb92f8c849aaa1eb"
+            ]
+        ]
+    },
+    {
+        "id": "66a144e354b752d0",
+        "type": "trigger",
+        "z": "ef064dcac3e82263",
+        "name": "offOnce",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "Go",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1060,
+        "y": 840,
+        "wires": [
+            [
+                "5ddc02ce4ed376a9"
+            ]
+        ]
+    },
+    {
+        "id": "204ab70277ca78cc",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Bat<65",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "50",
+        "payloadType": "num",
+        "x": 290,
+        "y": 980,
+        "wires": [
+            [
+                "6091ca6463f5764c"
+            ]
+        ]
+    },
+    {
+        "id": "72a5ebfcdb499c75",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Bat<80 >65",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "75",
+        "payloadType": "num",
+        "x": 270,
+        "y": 1020,
+        "wires": [
+            [
+                "6091ca6463f5764c"
+            ]
+        ]
+    },
+    {
+        "id": "b6c73775c5d3d78b",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Bat>80",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "90",
+        "payloadType": "num",
+        "x": 290,
+        "y": 1060,
+        "wires": [
+            [
+                "6091ca6463f5764c"
+            ]
+        ]
+    },
+    {
+        "id": "6091ca6463f5764c",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "batData",
+        "func": "flow.set(\"batteryState\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 1020,
+        "wires": [
+            [
+                "136ce3780b1b351c"
+            ]
+        ]
+    },
+    {
+        "id": "734aeda668e1518d",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "PV<2000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1999",
+        "payloadType": "num",
+        "x": 280,
+        "y": 940,
+        "wires": [
+            [
+                "b9c437843995d349"
+            ]
+        ]
+    },
+    {
+        "id": "4e8b30dc6bd6bb24",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "PV>=2000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2001",
+        "payloadType": "num",
+        "x": 280,
+        "y": 900,
+        "wires": [
+            [
+                "b9c437843995d349"
+            ]
+        ]
+    },
+    {
+        "id": "b9c437843995d349",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "pvData",
+        "func": "flow.set(\"pvState\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 920,
+        "wires": [
+            [
+                "136ce3780b1b351c"
+            ]
+        ]
+    },
+    {
+        "id": "1d1bd1771bc42bd5",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "feedin<2000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-2999",
+        "payloadType": "num",
+        "x": 270,
+        "y": 860,
+        "wires": [
+            [
+                "ed6398dc27472b12"
+            ]
+        ]
+    },
+    {
+        "id": "4a11535b2c159ff1",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "feedin>=5000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5000",
+        "payloadType": "num",
+        "x": 270,
+        "y": 820,
+        "wires": [
+            [
+                "ed6398dc27472b12"
+            ]
+        ]
+    },
+    {
+        "id": "ed6398dc27472b12",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "feedin",
+        "func": "flow.set(\"feedin\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 840,
+        "wires": [
+            [
+                "136ce3780b1b351c"
+            ]
+        ]
+    },
+    {
+        "id": "41c5b7b29f7caadc",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Go",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Go",
+        "payloadType": "str",
+        "x": 670,
+        "y": 800,
+        "wires": [
+            [
+                "42917a1eab231322"
+            ]
+        ]
+    },
+    {
+        "id": "6ad80307241a4a93",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "Stop",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Stop",
+        "payloadType": "str",
+        "x": 670,
+        "y": 880,
+        "wires": [
+            [
+                "42917a1eab231322"
+            ]
+        ]
+    },
+    {
+        "id": "200ea5c93c35a7cd",
+        "type": "trigger",
+        "z": "ef064dcac3e82263",
+        "name": "offOnce",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "Go",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1060,
+        "y": 1000,
+        "wires": [
+            [
+                "b15b251781217f6e"
+            ]
+        ]
+    },
+    {
+        "id": "620b80de8196da97",
+        "type": "trigger",
+        "z": "ef064dcac3e82263",
+        "name": "onOnce",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "Stop",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1060,
+        "y": 960,
+        "wires": [
+            [
+                "d2c1d0121d84bbfd"
+            ]
+        ]
+    },
+    {
+        "id": "29cd4126f999909d",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "useSpa",
+        "func": "flow.set(\"useSpa\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 760,
+        "wires": [
+            [
+                "136ce3780b1b351c"
+            ]
+        ]
+    },
+    {
+        "id": "2be8878c2829dcbd",
+        "type": "api-current-state",
+        "z": "ef064dcac3e82263",
+        "name": "spaThermostat",
+        "server": "315411fb.df557e",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "climate.spa_thermostat",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 260,
+        "y": 1100,
+        "wires": [
+            [
+                "ad5d241a5f5b5d63",
+                "c1530ec4a0dee22c",
+                "b9dc932636db8129"
+            ]
+        ]
+    },
+    {
+        "id": "f3d081f7ad3d464f",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 1100,
+        "wires": [
+            [
+                "2be8878c2829dcbd"
+            ]
+        ]
+    },
+    {
+        "id": "790489fb6fdc7aa3",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "useSpa",
+        "func": "flow.set(\"autoSpa\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 700,
+        "wires": [
+            [
+                "136ce3780b1b351c"
+            ]
+        ]
+    },
+    {
+        "id": "ad5d241a5f5b5d63",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "spaTemp",
+        "func": "flow.set(\"spaTemp\", msg.payload.attributes.current_temperature);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 1080,
+        "wires": [
+            [
+                "136ce3780b1b351c"
+            ]
+        ]
+    },
+    {
+        "id": "c1530ec4a0dee22c",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "spaTarget",
+        "func": "flow.set(\"spaTarget\", msg.payload.attributes.temperature);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 1120,
+        "wires": [
+            [
+                "136ce3780b1b351c"
+            ]
+        ]
+    },
+    {
+        "id": "b9dc932636db8129",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "6332be316db6e6c0",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "OACurrentRate",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "0ccfeebafb537348",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "OACurrentRate",
+        "func": "flow.set(\"OACurrentRate\", Number(msg.payload));\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 640,
+        "wires": [
+            [
+                "6332be316db6e6c0",
+                "136ce3780b1b351c",
+                "17078f87b2652de3"
+            ]
+        ]
+    },
+    {
+        "id": "f20496d7d2a93886",
+        "type": "server-state-changed",
+        "z": "ef064dcac3e82263",
+        "name": "useSpa",
+        "server": "315411fb.df557e",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_boolean.usespa",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "seconds",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 290,
+        "y": 760,
+        "wires": [
+            [
+                "29cd4126f999909d"
+            ]
+        ]
+    },
+    {
+        "id": "26106aa5dd8cf5e5",
+        "type": "server-state-changed",
+        "z": "ef064dcac3e82263",
+        "name": "autoSpa",
+        "server": "315411fb.df557e",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_boolean.autospa",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 280,
+        "y": 700,
+        "wires": [
+            [
+                "790489fb6fdc7aa3"
+            ]
+        ]
+    },
+    {
+        "id": "b1f568d2ad16ec17",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "debug 13",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "804a90a1b819da3f",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "immersionHeaterBoost",
+        "func": "flow.set(\"immersionHeaterBoost\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 40,
+        "wires": [
+            [
+                "17078f87b2652de3",
+                "b1f568d2ad16ec17"
+            ]
+        ]
+    },
+    {
+        "id": "06b476b9a11cb6c5",
+        "type": "server-state-changed",
+        "z": "ef064dcac3e82263",
+        "name": "immersionHeeterBoost",
+        "server": "315411fb.df557e",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "timer.immersion_heater_boost",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 200,
+        "y": 40,
+        "wires": [
+            [
+                "804a90a1b819da3f"
+            ]
+        ]
+    },
+    {
+        "id": "8dec2a0b66f545e1",
+        "type": "server-state-changed",
+        "z": "ef064dcac3e82263",
+        "name": "Solax Battary",
+        "server": "315411fb.df557e",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.solax_battery",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "29102b50f2ceeb9a"
+            ]
+        ]
+    },
+    {
+        "id": "abf7e71cc461b234",
+        "type": "server-state-changed",
+        "z": "ef064dcac3e82263",
+        "name": "Solax PV power",
+        "server": "315411fb.df557e",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.solax_feedinpowerm2",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "9e5e70ef325e0c7d"
+            ]
+        ]
+    },
+    {
+        "id": "3b15ab883c83d579",
+        "type": "server-state-changed",
+        "z": "ef064dcac3e82263",
+        "name": "Solax feedinpower",
+        "server": "315411fb.df557e",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.solax_feedinpower",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "ff6fe67dfb0a7144"
+            ]
+        ]
+    },
+    {
+        "id": "2edef58622e9f19d",
+        "type": "server-state-changed",
+        "z": "ef064dcac3e82263",
+        "name": "OACurrentRate",
+        "server": "315411fb.df557e",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.octopus_agile_current_rate",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 260,
+        "y": 640,
+        "wires": [
+            [
+                "0ccfeebafb537348"
+            ]
+        ]
+    },
+    {
+        "id": "e99e09e6757dbae0",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "time>=13",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "13",
+        "payloadType": "num",
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "a306d002632720c7"
+            ]
+        ]
+    },
+    {
+        "id": "8e503f104fe3058c",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "time>=9",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "9",
+        "payloadType": "num",
+        "x": 100,
+        "y": 640,
+        "wires": [
+            [
+                "a306d002632720c7"
+            ]
+        ]
+    },
+    {
+        "id": "770a4216c402e6d0",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "time>=14",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "14",
+        "payloadType": "num",
+        "x": 100,
+        "y": 480,
+        "wires": [
+            [
+                "a306d002632720c7"
+            ]
+        ]
+    },
+    {
+        "id": "e06ab5b67eef62e6",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "time>=12",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "12",
+        "payloadType": "num",
+        "x": 100,
+        "y": 600,
+        "wires": [
+            [
+                "a306d002632720c7"
+            ]
+        ]
+    },
+    {
+        "id": "315411fb.df557e",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 4,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30,
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m"
     }
 ]
