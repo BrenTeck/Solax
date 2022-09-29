@@ -419,7 +419,7 @@
         "id": "e1f383b7d9d178cc",
         "type": "inject",
         "z": "ef064dcac3e82263",
-        "name": "Bat>80",
+        "name": "Bat=90",
         "props": [
             {
                 "p": "payload"
@@ -448,7 +448,7 @@
         "id": "a165b7b793d2b15b",
         "type": "inject",
         "z": "ef064dcac3e82263",
-        "name": "Bat<65",
+        "name": "Bat=50",
         "props": [
             {
                 "p": "payload"
@@ -489,7 +489,9 @@
         "wires": [
             [
                 "8341a4a6aa03a29a",
-                "17078f87b2652de3"
+                "17078f87b2652de3",
+                "0e2c12c1d9510c2b",
+                "136ce3780b1b351c"
             ]
         ]
     },
@@ -555,7 +557,9 @@
         "wires": [
             [
                 "16f54f0961f82b35",
-                "17078f87b2652de3"
+                "17078f87b2652de3",
+                "0e2c12c1d9510c2b",
+                "136ce3780b1b351c"
             ]
         ]
     },
@@ -610,7 +614,7 @@
         "type": "function",
         "z": "ef064dcac3e82263",
         "name": "immersionFunction",
-        "func": "var pvPower=flow.get(\"pvState\");\nvar battery=flow.get(\"batteryState\");\nvar feed=flow.get(\"feedin\");\nvar timeNow=flow.get(\"time\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar immersionHeaterBoost = flow.get(\"immersionHeaterBoost\");\n\nif (OACurrentRate <= '0' && battery <= '10') {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate > '0' && battery > '10') {\n    if (immersionHeaterBoost == \"active\"){\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else {\n//    else if (immersionHeaterBoost != \"active\"){    \n        if (timeNow >= '6' && timeNow <= '13') {\n            if (pvPower >= '2000') {\n                if (battery >= '30') {\n                    if (feed >= '-2000') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= '-2000') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '14' && timeNow <= '19') {\n            if (pvPower >= '2000') {\n                if(battery >= '80') {\n                    if(feed >= '-2000') {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '64') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if(battery >= '65') {\n                    if(feed >= '-2000') {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '50') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload=\"Stop\";\n                return msg;\n            }\n        }\n        else {\n            msg.payload = \"Stop\";\n            return msg;\n        }\n    }\n}\nelse {\n    msg.payload=\"Stop\";\n    return msg;\n}\nreturn msg;",
+        "func": "var pvPower=flow.get(\"pvState\");\nvar battery=flow.get(\"batteryState\");\nvar feed=flow.get(\"feedin\");\nvar timeNow=flow.get(\"time\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar immersionHeaterBoost = flow.get(\"immersionHeaterBoost\");\n\nif (OACurrentRate <= '0' && battery <= '10') {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate > '0' && battery > '10') {\n    if (immersionHeaterBoost == \"active\"){\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else {\n//    else if (immersionHeaterBoost != \"active\"){    \n        if (timeNow >= '6' && timeNow <= '12') {\n            if (pvPower >= '2000') {\n                if (battery >= '30') {\n                    if (feed <= '2000') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed <= '2000') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '13' && timeNow <= '14' && pvPower >= '2000' && feed <= '2000') {\n            if (battery >= '80'){\n                msg.payload = \"Go\";\n                return msg;\n            }\n            else if (battery >= '60'){\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '15' && timeNow <= '19') {\n            if (pvPower >= '2000') {\n                if(battery >= '80') {\n                    if(feed <= '2000') {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '65') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if(battery >= '65') {\n                    if(feed <= '2000') {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '50') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload=\"Stop\";\n                return msg;\n            }\n        }\n        else {\n            msg.payload = \"Stop\";\n            return msg;\n        }\n    }\n}\nelse {\n    msg.payload=\"Stop\";\n    return msg;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -628,7 +632,7 @@
         "id": "9980f17cadd4d14d",
         "type": "inject",
         "z": "ef064dcac3e82263",
-        "name": "Bat<80 >65",
+        "name": "Bat=75",
         "props": [
             {
                 "p": "payload"
@@ -641,7 +645,7 @@
         "topic": "",
         "payload": "75",
         "payloadType": "num",
-        "x": 310,
+        "x": 330,
         "y": 320,
         "wires": [
             [
@@ -723,7 +727,8 @@
         "wires": [
             [
                 "17078f87b2652de3",
-                "049c106f10c0c707"
+                "049c106f10c0c707",
+                "0e2c12c1d9510c2b"
             ]
         ]
     },
@@ -818,7 +823,7 @@
         "type": "function",
         "z": "ef064dcac3e82263",
         "name": "acData",
-        "func": "var pvPower=flow.get(\"pvState\");\nvar feedin=flow.get(\"feedin\");\ncontext.set(\"tempAcPowerState\", msg.payload);\nvar tempAcPowerState=context.get(\"tempAcPowerState\");\nflow.set(\"acPowerUsed\", pvPower + tempAcPowerState - feedin);\nmsg.payload = \"acPowerUsed\";\nreturn msg;",
+        "func": "flow.set(\"tempAcPowerState\", msg.payload);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -828,7 +833,7 @@
         "y": 420,
         "wires": [
             [
-                "2f1a581dacfa5674"
+                "0e2c12c1d9510c2b"
             ]
         ]
     },
@@ -845,15 +850,15 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 420,
+        "x": 860,
+        "y": 400,
         "wires": []
     },
     {
         "id": "3e74841853f9711c",
         "type": "inject",
         "z": "ef064dcac3e82263",
-        "name": "acPower<65",
+        "name": "acPower=50",
         "props": [
             {
                 "p": "payload"
@@ -882,7 +887,7 @@
         "id": "d63cfeb44f8ab9b1",
         "type": "inject",
         "z": "ef064dcac3e82263",
-        "name": "acPower>80",
+        "name": "acPower=81",
         "props": [
             {
                 "p": "payload"
@@ -1082,25 +1087,6 @@
         "y": 760,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "136ce3780b1b351c",
-        "type": "function",
-        "z": "ef064dcac3e82263",
-        "name": "spaFunction",
-        "func": "var pvPower = flow.get(\"pvState\");\nvar battery = flow.get(\"batteryState\");\nvar feed = flow.get(\"feedin\");\nvar timeNow = flow.get(\"time\");\nvar useSpa = flow.get(\"useSpa\");\nvar autoSpa = flow.get(\"autoSpa\");\nvar spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\n//var spaTargetTemp = flow.get(\"spaTarget\");\n\n\nif (useSpa === \"on\") {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"off\") {\n    if (OACurrentRate <= '0' && battery <= '10') {\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else if (OACurrentRate > '0') {\n        if (autoSpa === \"on\") {\n            if (timeNow >= '12' && timeNow < '14') {\n                if (pvPower >= '2000') {\n                    if (battery >= '40') {\n                        if (feed >= '-2000') {\n                            if (spaTemp <= spaTarget) {\n                                msg.payload = \"Go\";\n                                return msg;\n                            }\n                            else {\n                                msg.payload = \"Stop\";\n                                return msg;\n                            }\n                        }\n                        else {\n                            msg.payload = \"Stop\";\n                            return msg;\n                        }\n                    }\n                    if (battery <= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (pvPower >= '3000') {\n                    if (battery >= '65') {\n                        if (feed >= '-2000') {\n                            if (spaTemp <= spaTarget) {\n                                msg.payload = \"Go\";\n                                return msg;\n                            }\n                            else {\n                                msg.payload = \"Stop\";\n                                return msg;\n                            }\n                        }\n                        else {\n                            msg.payload = \"Stop\";\n                            return msg;\n                        }\n                    }\n                    if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (timeNow > '14' && timeNow < '20') {\n                if (pvPower >= '2000') {\n                    if (battery >= '80') {\n                        if (feed >= '-2000') {\n                            if (spaTemp <= spaTarget) {\n                                msg.payload = \"Go\";\n                                return msg;\n                            }\n                            else\n                                msg.payload = \"Stop\";\n                            return msg;\n                        }\n                        else {\n                            msg.payload = \"Stop\";\n                            return msg;\n                        }\n                    }\n                    if (battery <= '64') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (pvPower >= '3000') {\n                    if (battery >= '65') {\n                        if (feed >= '-2000') {\n                            if (spaTemp <= spaTarget) {\n                                msg.payload = \"Go\";\n                                return msg;\n                            }\n                            else\n                                msg.payload = \"Stop\";\n                            return msg;\n                        }\n                        else {\n                            msg.payload = \"Stop\";\n                            return msg;\n                        }\n                    }\n                    if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload = \"Stop\";\n            }\n            return msg;\n        }\n        else if (autoSpa === \"off\") {\n            msg.payload = \"Stop\";\n        }\n    }\n}\nelse {\n    msg.payload = \"Stop\";\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 670,
-        "y": 840,
-        "wires": [
-            [
-                "42917a1eab231322"
-            ]
         ]
     },
     {
@@ -1558,262 +1544,6 @@
         ]
     },
     {
-        "id": "204ab70277ca78cc",
-        "type": "inject",
-        "z": "ef064dcac3e82263",
-        "name": "Bat<65",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "50",
-        "payloadType": "num",
-        "x": 290,
-        "y": 980,
-        "wires": [
-            [
-                "6091ca6463f5764c"
-            ]
-        ]
-    },
-    {
-        "id": "72a5ebfcdb499c75",
-        "type": "inject",
-        "z": "ef064dcac3e82263",
-        "name": "Bat<80 >65",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "75",
-        "payloadType": "num",
-        "x": 270,
-        "y": 1020,
-        "wires": [
-            [
-                "6091ca6463f5764c"
-            ]
-        ]
-    },
-    {
-        "id": "b6c73775c5d3d78b",
-        "type": "inject",
-        "z": "ef064dcac3e82263",
-        "name": "Bat>80",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "90",
-        "payloadType": "num",
-        "x": 290,
-        "y": 1060,
-        "wires": [
-            [
-                "6091ca6463f5764c"
-            ]
-        ]
-    },
-    {
-        "id": "6091ca6463f5764c",
-        "type": "function",
-        "z": "ef064dcac3e82263",
-        "name": "batData",
-        "func": "flow.set(\"batteryState\",msg.payload);\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 1020,
-        "wires": [
-            [
-                "136ce3780b1b351c"
-            ]
-        ]
-    },
-    {
-        "id": "734aeda668e1518d",
-        "type": "inject",
-        "z": "ef064dcac3e82263",
-        "name": "PV<2000",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1999",
-        "payloadType": "num",
-        "x": 280,
-        "y": 940,
-        "wires": [
-            [
-                "b9c437843995d349"
-            ]
-        ]
-    },
-    {
-        "id": "4e8b30dc6bd6bb24",
-        "type": "inject",
-        "z": "ef064dcac3e82263",
-        "name": "PV>=2000",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "2001",
-        "payloadType": "num",
-        "x": 280,
-        "y": 900,
-        "wires": [
-            [
-                "b9c437843995d349"
-            ]
-        ]
-    },
-    {
-        "id": "b9c437843995d349",
-        "type": "function",
-        "z": "ef064dcac3e82263",
-        "name": "pvData",
-        "func": "flow.set(\"pvState\",msg.payload);\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 920,
-        "wires": [
-            [
-                "136ce3780b1b351c"
-            ]
-        ]
-    },
-    {
-        "id": "1d1bd1771bc42bd5",
-        "type": "inject",
-        "z": "ef064dcac3e82263",
-        "name": "feedin<2000",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-2999",
-        "payloadType": "num",
-        "x": 270,
-        "y": 860,
-        "wires": [
-            [
-                "ed6398dc27472b12"
-            ]
-        ]
-    },
-    {
-        "id": "4a11535b2c159ff1",
-        "type": "inject",
-        "z": "ef064dcac3e82263",
-        "name": "feedin>=5000",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "5000",
-        "payloadType": "num",
-        "x": 270,
-        "y": 820,
-        "wires": [
-            [
-                "ed6398dc27472b12"
-            ]
-        ]
-    },
-    {
-        "id": "ed6398dc27472b12",
-        "type": "function",
-        "z": "ef064dcac3e82263",
-        "name": "feedin",
-        "func": "flow.set(\"feedin\",msg.payload);\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 430,
-        "y": 840,
-        "wires": [
-            [
-                "136ce3780b1b351c"
-            ]
-        ]
-    },
-    {
         "id": "41c5b7b29f7caadc",
         "type": "inject",
         "z": "ef064dcac3e82263",
@@ -1925,7 +1655,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 760,
+        "y": 900,
         "wires": [
             [
                 "136ce3780b1b351c"
@@ -1963,7 +1693,7 @@
         "entity_location": "data",
         "override_data": "msg",
         "x": 260,
-        "y": 1100,
+        "y": 960,
         "wires": [
             [
                 "ad5d241a5f5b5d63",
@@ -1994,7 +1724,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 90,
-        "y": 1100,
+        "y": 960,
         "wires": [
             [
                 "2be8878c2829dcbd"
@@ -2013,7 +1743,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 700,
+        "y": 840,
         "wires": [
             [
                 "136ce3780b1b351c"
@@ -2032,7 +1762,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 1080,
+        "y": 940,
         "wires": [
             [
                 "136ce3780b1b351c"
@@ -2051,7 +1781,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "136ce3780b1b351c"
@@ -2071,7 +1801,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 620,
-        "y": 1100,
+        "y": 960,
         "wires": []
     },
     {
@@ -2107,8 +1837,8 @@
         "wires": [
             [
                 "6332be316db6e6c0",
-                "136ce3780b1b351c",
-                "17078f87b2652de3"
+                "17078f87b2652de3",
+                "136ce3780b1b351c"
             ]
         ]
     },
@@ -2156,7 +1886,7 @@
             }
         ],
         "x": 290,
-        "y": 760,
+        "y": 900,
         "wires": [
             [
                 "29cd4126f999909d"
@@ -2219,7 +1949,7 @@
             }
         ],
         "x": 280,
-        "y": 700,
+        "y": 840,
         "wires": [
             [
                 "790489fb6fdc7aa3"
@@ -2656,6 +2386,151 @@
                 "a306d002632720c7"
             ]
         ]
+    },
+    {
+        "id": "0e2c12c1d9510c2b",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "acDataUpdater",
+        "func": "var pvPower=flow.get(\"pvState\");\nvar feedin=flow.get(\"feedin\");\nvar tempAcPowerState = flow.get(\"tempAcPowerState\");\ncontext.set(\"tempPvPowAcPow\", pvPower + tempAcPowerState);\nvar tempPvPowAcPow = context.get(\"tempPvPowAcPow\");\ncontext.set(\"tempPvPowAcPowfeedin\", tempPvPowAcPow - feedin );\nvar tempPvPowAcPowfeedin = context.get(\"tempPvPowAcPowfeedin\");\n//flow.set(\"acPowerUsage\", pvPower + tempAcPowerState - feedin);\nflow.set(\"acPowerUsageUpdater\", tempPvPowAcPowfeedin);\nmsg.payload = \"acPowerUsageUpdater\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 420,
+        "wires": [
+            [
+                "2f1a581dacfa5674",
+                "2cf7ad02024b5c63"
+            ]
+        ]
+    },
+    {
+        "id": "136ce3780b1b351c",
+        "type": "function",
+        "z": "ef064dcac3e82263",
+        "name": "spaFunction",
+        "func": "var pvPower = flow.get(\"pvState\");\nvar battery = flow.get(\"batteryState\");\nvar feed = flow.get(\"feedin\");\nvar timeNow = flow.get(\"time\");\nvar useSpa = flow.get(\"useSpa\");\nvar autoSpa = flow.get(\"autoSpa\");\nvar spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\n//var spaTargetTemp = flow.get(\"spaTarget\");\n\n\nif (useSpa === \"on\") {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"off\") {\n    if (OACurrentRate <= '0' && battery <= '10') {\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else if (OACurrentRate > '0') {\n        if (autoSpa === \"on\") {\n            if (timeNow >= '10' && timeNow <= '11' && pvPower >= '2000' && feed <= '1000' && spaTemp <= spaTarget) {\n                if (battery >= '30') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery >= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            if (timeNow >= '12' && timeNow < '14' && pvPower >= '3000' && feed <= '1000' && spaTemp <= spaTarget) {\n                if (battery >= '40') {\n                    msg.payload = \"Go\";\n                    return msg;\n                    }\n                else if (battery <= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }    \n            else if (timeNow >= '12' && timeNow < '14' && pvPower >= '2000' && feed <= '1000' && spaTemp <= spaTarget){\n                if (battery >= '65') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (timeNow > '14' && timeNow < '20' && pvPower >= '2000' && feed <= '1000' && spaTemp <= spaTarget) {\n                if (battery >= '80') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '64') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else if (timeNow > '14' && timeNow < '20' && pvPower >= '3000' && feed <= '1000' && spaTemp <= spaTarget) {\n                    if (battery >= '65') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n            return msg;\n        }\n        else if (autoSpa === \"off\") {\n            msg.payload = \"Stop\";\n        }\n    }\n}\nelse {\n    msg.payload = \"Stop\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 840,
+        "wires": [
+            [
+                "42917a1eab231322"
+            ]
+        ]
+    },
+    {
+        "id": "664c2660d0931781",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "40",
+        "payloadType": "msg",
+        "x": 230,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a168d2a55a2dac68",
+        "type": "inject",
+        "z": "ef064dcac3e82263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "set(\"spaTarget\", 34)",
+        "payloadType": "flow",
+        "x": 290,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2cf7ad02024b5c63",
+        "type": "api-call-service",
+        "z": "ef064dcac3e82263",
+        "name": "acPowerUsageUpdater",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.acpowerusage"
+        ],
+        "data": "{\"value\":\"{{flow.acPowerUsageUpdater}}\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "acPowerUsageUpdater",
+                "valueType": "flow"
+            }
+        ],
+        "queue": "none",
+        "x": 890,
+        "y": 440,
+        "wires": [
+            [
+                "d252898d1a9fae6e"
+            ]
+        ]
+    },
+    {
+        "id": "d252898d1a9fae6e",
+        "type": "debug",
+        "z": "ef064dcac3e82263",
+        "name": "debug 20",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 440,
+        "wires": []
     },
     {
         "id": "315411fb.df557e",
