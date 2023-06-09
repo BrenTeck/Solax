@@ -1,3 +1,8 @@
+Solax automation with Node Red controlling Imersion heater and Lay-Z-Spa
+
+Lay-Z-Spa automation with Node Red when we have lots of sun turn on the Lay-Z-Spa.
+Lay-Z-Spa intergration with Home Assistant https://github.com/BrenTeck/Lay-Z-Spa
+
 Solax inverter get request
 
 I am trying to get data from solax using solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=MyToken&sn=MySN
