@@ -2,7 +2,7 @@
     {
         "id": "fb3db93b38ecd3eb",
         "type": "tab",
-        "label": "Sola Automation 3",
+        "label": "GoodSola Automation 3",
         "disabled": false,
         "info": "",
         "env": []
@@ -62,7 +62,7 @@
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
-        "queue": "none",
+        "queue": "first",
         "x": 1840,
         "y": 160,
         "wires": [
@@ -89,7 +89,7 @@
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
-        "queue": "none",
+        "queue": "first",
         "x": 1840,
         "y": 240,
         "wires": [
@@ -1165,7 +1165,7 @@
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
-        "queue": "none",
+        "queue": "first",
         "x": 1680,
         "y": 1040,
         "wires": [
@@ -2415,7 +2415,7 @@
         "type": "function",
         "z": "fb3db93b38ecd3eb",
         "name": "spaFunction",
-        "func": "var pvPower = flow.get(\"pvState\");\nvar battery = flow.get(\"batteryState\");\nvar feed = parseInt(flow.get (\"feedin\"));\nvar timeNow = flow.get(\"time\");\nvar useSpa = flow.get(\"useSpa\");\nvar autoSpa = flow.get(\"autoSpa\");\nvar spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar pauseSpa = flow.get(\"pauseSpa\");\nvar acPowerUsage = flow.get(\"acPowerUsageUpdater\");\nvar spaOverUse = flow.get(\"spaOverUse\");\n//var spaTargetTemp = flow.get(\"spaTarget\");\n\n\nif (useSpa === \"on\" && timeNow <= '2') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '3' && timeNow <= '7' && OACurrentRate <= '0') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '8') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"off\") {\n    if (OACurrentRate <= '0' && battery <= '10') {\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else if (OACurrentRate > '0') {\n        if (autoSpa === \"on\") {\n            if (pauseSpa != \"Pause\" && spaOverUse != \"Pause\"){\n            if (timeNow >= '10' && timeNow <= '11' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '30') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery >= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            if (timeNow >= '12' && timeNow <= '14' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '40') {\n                    msg.payload = \"Go\";\n                    return msg;\n                    }\n                else if (battery <= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }    \n            else if (timeNow >= '12' && timeNow <= '14' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget){\n                if (battery >= '65') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '80') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '64') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '65') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n            }\n            else if (pauseSpa === \"Pause\") {\n                msg.payload = \"Stop\";\n            }\n            return msg;\n        }\n        else if (autoSpa === \"off\") {\n            msg.payload = \"Stop\";\n        }\n    }\n}\nelse {\n    msg.payload = \"Stop\";\n}\nreturn msg;",
+        "func": "var pvPower = flow.get(\"pvState\");\nvar battery = flow.get(\"batteryState\");\nvar feed = parseInt(flow.get (\"feedin\"));\nvar timeNow = flow.get(\"time\");\nvar useSpa = flow.get(\"useSpa\");\nvar autoSpa = flow.get(\"autoSpa\");\nvar spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar pauseSpa = flow.get(\"pauseSpa\");\nvar acPowerUsage = flow.get(\"acPowerUsageUpdater\");\nvar spaOverUse = flow.get(\"spaOverUse\");\n//var spaTargetTemp = flow.get(\"spaTarget\");\n\n\nif (useSpa === \"on\" && timeNow <= '2') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '3' && timeNow <= '7' && OACurrentRate <= '0') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '8') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"off\") {\n    if (OACurrentRate <= '0' && battery <= '10') {\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else if (OACurrentRate > '0') {\n        if (autoSpa === \"on\") {\n            if (pauseSpa != \"Pause\" && spaOverUse != \"Pause\"){\n                if (timeNow >= '8' && timeNow <= '9' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '80') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery >= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n            if (timeNow >= '10' && timeNow <= '11' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '30') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery >= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            if (timeNow >= '12' && timeNow <= '14' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '40') {\n                    msg.payload = \"Go\";\n                    return msg;\n                    }\n                else if (battery <= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }    \n            else if (timeNow >= '12' && timeNow <= '14' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget){\n                if (battery >= '65') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '80') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '64') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '65') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n            }\n            else if (pauseSpa === \"Pause\") {\n                msg.payload = \"Stop\";\n            }\n            return msg;\n        }\n        else if (autoSpa === \"off\") {\n            msg.payload = \"Stop\";\n        }\n    }\n    else if (useSpa === \"off\") {\n        msg.payload = \"Stop\";\n    }\n}\nelse {\n    msg.payload = \"Stop\";\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
