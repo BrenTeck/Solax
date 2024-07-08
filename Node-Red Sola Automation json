@@ -614,8 +614,9 @@
         "type": "function",
         "z": "fb3db93b38ecd3eb",
         "name": "immersionFunction",
-        "func": "var pvPower=flow.get(\"pvState\");\nvar battery=flow.get(\"batteryState\");\nvar feed = parseInt(flow.get(\"feedin\"));\nvar timeNow=flow.get(\"time\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar immersionHeaterBoost = flow.get(\"immersionHeaterBoost\");\nvar nestOccupied = flow.get(\"nestOccupied\");\nvar immersionOverUse = flow.get(\"immersionOverUse\");\n\nif (OACurrentRate <= '0' && battery <= '10') {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate <= '10' && battery <= '10' && nestOccupied === \"on\") {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate > '0' && battery > '10') {\n    if (immersionHeaterBoost == \"active\"){\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else {\n        if (immersionOverUse != \"Pause\"){\n//    else if (immersionHeaterBoost != \"active\"){    \n        if (timeNow >= '6' && timeNow <= '12') {\n            if (pvPower >= '2000') {\n                if (battery >= '30') {\n                    if (feed >= -2000) {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= -2000) {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '13' && timeNow <= '14' && pvPower >= '2000' && feed >= -2000) {\n            if (battery >= '80'){\n                msg.payload = \"Go\";\n                return msg;\n            }\n            else if (battery <= '60'){\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '15' && timeNow <= '19') {\n            if (pvPower >= '2000') {\n                if (battery >= '80') {\n                    if (feed >= -2000) {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '65') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= -2000) {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '50') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload=\"Stop\";\n                return msg;\n            }\n        }\n        else {\n            msg.payload = \"Stop\";\n            return msg;\n        }\n    }\n    }\n}\nelse {\n    msg.payload=\"Stop\";\n    return msg;\n}\nreturn msg;",
+        "func": "var pvPower=flow.get(\"pvState\");\nvar battery=flow.get(\"batteryState\");\nvar feed = parseInt(flow.get(\"feedin\"));\nvar timeNow=flow.get(\"time\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar immersionHeaterBoost = flow.get(\"immersionHeaterBoost\");\nvar nestOccupied = flow.get(\"nestOccupied\");\nvar immersionOverUse = flow.get(\"immersionOverUse\");\n\n//if (OACurrentRate = \"NaN\"){\n//    flow.set(\"OACurrentRate\", 999);\n//}\n\nif (OACurrentRate <= '0' && battery <= '10') {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate <= '9' && battery <= '10' && nestOccupied === \"on\") {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate > '0' && battery > '10' || OACurrentRate === \"NaN\" && battery > '10') {\n    if (immersionHeaterBoost == \"active\"){\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else {\n        if (immersionOverUse != \"Pause\"){\n//    else if (immersionHeaterBoost != \"active\"){    \n        if (timeNow >= '6' && timeNow <= '12') {\n            if (pvPower >= '2000') {\n                if (battery >= '30') {\n                    if (feed >= -2000) {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= -2000) {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '13' && timeNow <= '14' && pvPower >= '2000' && feed >= -2000) {\n            if (battery >= '80'){\n                msg.payload = \"Go\";\n                return msg;\n            }\n            else if (battery <= '60'){\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '15' && timeNow <= '19') {\n            if (pvPower >= '2000') {\n                if (battery >= '80') {\n                    if (feed >= -2000) {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '65') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= -2000) {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '50') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload=\"Stop\";\n                return msg;\n            }\n        }\n        else {\n            msg.payload = \"Stop\";\n            return msg;\n        }\n    }\n    }\n}\nelse {\n    msg.payload=\"Stop\";\n    return msg;\n}\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -757,27 +758,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "Solax acpower",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "sensor.solax_acpower",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "num",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": false,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.solax_acpower",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -1169,7 +1160,9 @@
         "x": 1680,
         "y": 1040,
         "wires": [
-            []
+            [
+                "df445a9233051b5b"
+            ]
         ]
     },
     {
@@ -1283,7 +1276,9 @@
         "x": 1520,
         "y": 1140,
         "wires": [
-            []
+            [
+                "0ce54c7a704e23a2"
+            ]
         ]
     },
     {
@@ -1337,7 +1332,9 @@
         "x": 1520,
         "y": 1080,
         "wires": [
-            []
+            [
+                "9fb9cd229f1e5e6d"
+            ]
         ]
     },
     {
@@ -1829,7 +1826,7 @@
         "type": "function",
         "z": "fb3db93b38ecd3eb",
         "name": "OACurrentRate",
-        "func": "flow.set(\"OACurrentRate\", Number(msg.payload));\nreturn msg;\n",
+        "func": "//if (msg.payload = \"NaN\") {\n//    flow.set(\"OACurrentRate\", 999);\n//}\n//else {\n    flow.set(\"OACurrentRate\", Number(msg.payload));\n//}\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1851,27 +1848,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "useSpa",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "input_boolean.usespa",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "str",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": false,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_boolean.usespa",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "seconds",
@@ -1902,27 +1889,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "autoSpa",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "input_boolean.autospa",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "str",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": false,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_boolean.autospa",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -2001,27 +1978,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "immersionHeeterBoost",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "timer.immersion_heater_boost",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "str",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": true,
+        "exposeAsEntityConfig": "",
+        "entityId": "timer.immersion_heater_boost",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -2064,27 +2031,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "Solax Battary",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "sensor.solax_battery",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "num",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": false,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.solax_battery",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -2115,27 +2072,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "Solax PV power",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "sensor.solax_feedinpowerm2",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "num",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": false,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.solax_feedinpowerm2",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -2166,27 +2113,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "Solax feedinpower",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "sensor.solax_feedinpower",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "num",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": false,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.solax_feedinpower",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -2217,27 +2154,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "OACurrentRate",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "sensor.octopus_agile_current_rate",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "str",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": false,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.octopus_agile_current_rate",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -2415,7 +2342,7 @@
         "type": "function",
         "z": "fb3db93b38ecd3eb",
         "name": "spaFunction",
-        "func": "var pvPower = flow.get(\"pvState\");\nvar battery = flow.get(\"batteryState\");\nvar feed = parseInt(flow.get (\"feedin\"));\nvar timeNow = flow.get(\"time\");\nvar useSpa = flow.get(\"useSpa\");\nvar autoSpa = flow.get(\"autoSpa\");\nvar spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar pauseSpa = flow.get(\"pauseSpa\");\nvar acPowerUsage = flow.get(\"acPowerUsageUpdater\");\nvar spaOverUse = flow.get(\"spaOverUse\");\n//var spaTargetTemp = flow.get(\"spaTarget\");\n\n\nif (useSpa === \"on\" && timeNow <= '2') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '3' && timeNow <= '7' && OACurrentRate <= '0') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '8') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"off\") {\n    if (OACurrentRate <= '0' && battery <= '10') {\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else if (OACurrentRate > '0') {\n        if (autoSpa === \"on\") {\n            if (pauseSpa != \"Pause\" && spaOverUse != \"Pause\"){\n                if (timeNow >= '8' && timeNow <= '9' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '80') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery >= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n            if (timeNow >= '10' && timeNow <= '11' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '30') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery >= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            if (timeNow >= '12' && timeNow <= '14' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '40') {\n                    msg.payload = \"Go\";\n                    return msg;\n                    }\n                else if (battery <= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }    \n            else if (timeNow >= '12' && timeNow <= '14' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget){\n                if (battery >= '65') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '80') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '64') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '65') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n            }\n            else if (pauseSpa === \"Pause\") {\n                msg.payload = \"Stop\";\n            }\n            return msg;\n        }\n        else if (autoSpa === \"off\") {\n            msg.payload = \"Stop\";\n        }\n    }\n    else if (useSpa === \"off\") {\n        msg.payload = \"Stop\";\n    }\n}\nelse {\n    msg.payload = \"Stop\";\n}\nreturn msg;",
+        "func": "var pvPower = flow.get(\"pvState\");\nvar battery = flow.get(\"batteryState\");\nvar feed = parseInt(flow.get (\"feedin\"));\nvar timeNow = flow.get(\"time\");\nvar useSpa = flow.get(\"useSpa\");\nvar autoSpa = flow.get(\"autoSpa\");\nvar spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar pauseSpa = flow.get(\"pauseSpa\");\nvar acPowerUsage = flow.get(\"acPowerUsageUpdater\");\nvar spaOverUse = flow.get(\"spaOverUse\");\n//var spaTargetTemp = flow.get(\"spaTarget\");\n\n\nif (useSpa === \"on\" && timeNow <= '2') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '3' && timeNow <= '7' && OACurrentRate <= '0') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '8') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"off\") {\n    if (OACurrentRate <= '0' && battery <= '10') {\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else if (OACurrentRate > '0') {\n        if (autoSpa === \"on\") {\n            if (pauseSpa != \"Pause\" && spaOverUse != \"Pause\"){\n                if (timeNow >= '8' && timeNow <= '9' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '80') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery >= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (timeNow >= '7' && timeNow <= '9' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '40') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery >= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n            if (timeNow >= '10' && timeNow <= '11' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '30') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery >= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            if (timeNow >= '12' && timeNow <= '14' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '40') {\n                    msg.payload = \"Go\";\n                    return msg;\n                    }\n                else if (battery <= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }    \n            else if (timeNow >= '12' && timeNow <= '14' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget){\n                if (battery >= '65') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '80') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '64') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '65') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n            }\n            else if (pauseSpa === \"Pause\") {\n                msg.payload = \"Stop\";\n            }\n            return msg;\n        }\n        else if (autoSpa === \"off\") {\n            msg.payload = \"Stop\";\n        }\n    }\n    else if (useSpa === \"off\") {\n        msg.payload = \"Stop\";\n    }\n}\nelse {\n    msg.payload = \"Stop\";\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2487,27 +2414,17 @@
         "z": "fb3db93b38ecd3eb",
         "name": "nestOccupied",
         "server": "315411fb.df557e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "input_boolean.nestoccupied",
-        "entityidfiltertype": "exact",
-        "outputinitially": true,
-        "state_type": "str",
-        "haltifstate": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
+        "version": 5,
         "outputs": 1,
-        "output_only_on_state_change": false,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_boolean.nestoccupied",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -2896,6 +2813,213 @@
             [
                 "92aa18dcc3093752"
             ]
+        ]
+    },
+    {
+        "id": "c9b990d6eed753e0",
+        "type": "inject",
+        "z": "fb3db93b38ecd3eb",
+        "name": "Go",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Go",
+        "payloadType": "str",
+        "x": 1370,
+        "y": 700,
+        "wires": [
+            [
+                "91d33683d7a36306"
+            ]
+        ]
+    },
+    {
+        "id": "cf4d5a45c95328d3",
+        "type": "inject",
+        "z": "fb3db93b38ecd3eb",
+        "name": "Started!",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "15",
+        "topic": "",
+        "payload": "Go",
+        "payloadType": "str",
+        "x": 1420,
+        "y": 400,
+        "wires": [
+            [
+                "fb8c7080de2231ef"
+            ]
+        ]
+    },
+    {
+        "id": "fb8c7080de2231ef",
+        "type": "debug",
+        "z": "fb3db93b38ecd3eb",
+        "name": "debug 45",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1580,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "ace4e7f5d6a8c244",
+        "type": "server-state-changed",
+        "z": "fb3db93b38ecd3eb",
+        "name": "Immersion Heater Unknown",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "entityId": "switch.immersion_heater_on_r_1f_tp60",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "Unknown",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "Stop",
+                "valueType": "str"
+            }
+        ],
+        "x": 1060,
+        "y": 260,
+        "wires": [
+            [
+                "4be272d6d92aa129"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ea4d1f6c2a3d8528",
+        "type": "inject",
+        "z": "fb3db93b38ecd3eb",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "30",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1010,
+        "y": 320,
+        "wires": [
+            [
+                "0e4a7ca9dd407029"
+            ]
+        ]
+    },
+    {
+        "id": "0e4a7ca9dd407029",
+        "type": "api-current-state",
+        "z": "fb3db93b38ecd3eb",
+        "name": "Immersion Heater State",
+        "server": "315411fb.df557e",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unknown",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "switch.immersion_heater_on_r_1f_tp60",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "Go",
+                "valueType": "str"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1210,
+        "y": 300,
+        "wires": [
+            [
+                "e05d9f1e0a5c4f46"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "df445a9233051b5b",
+        "type": "api-call-service",
+        "z": "fb3db93b38ecd3eb",
+        "name": "Power Off",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.spa_power"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "first",
+        "x": 1840,
+        "y": 1020,
+        "wires": [
+            []
         ]
     },
     {
