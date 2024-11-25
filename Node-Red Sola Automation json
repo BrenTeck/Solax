@@ -1,16 +1,16 @@
 [
     {
-        "id": "fb3db93b38ecd3eb",
+        "id": "76fe4d1933966a7e",
         "type": "tab",
-        "label": "GoodSola Automation 3",
+        "label": "GoodSola Automation 4",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "4be272d6d92aa129",
+        "id": "955268ae7dd48051",
         "type": "switch",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "property": "payload",
         "propertyType": "msg",
@@ -29,77 +29,85 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1250,
+        "x": 1190,
         "y": 200,
         "wires": [
             [
-                "46245aa401524e91",
-                "e05d9f1e0a5c4f46"
+                "70cebb4668aaedcd",
+                "892eab89194eef05"
             ],
             [
-                "e05d9f1e0a5c4f46",
-                "46245aa401524e91"
+                "892eab89194eef05",
+                "70cebb4668aaedcd"
             ]
         ]
     },
     {
-        "id": "74189ce2fcde8e81",
+        "id": "74252149d1a48e3a",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Immersion_heater_on",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_on",
+        "action": "homeassistant.turn_on",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.immersion_heater_on_r_1f_tp60"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "json",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1840,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "x": 1780,
         "y": 160,
         "wires": [
             []
         ]
     },
     {
-        "id": "13129f5693128725",
+        "id": "c981fcb06c69ac5b",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Immersion_heater_off",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_on",
+        "action": "homeassistant.turn_on",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.immersion_heater_off_r_1f_tp50"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "json",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1840,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "x": 1780,
         "y": 240,
         "wires": [
             []
         ]
     },
     {
-        "id": "7a50bd585b3d37e4",
+        "id": "73d303ef21c95152",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Go",
         "props": [
             {
@@ -113,18 +121,18 @@
         "topic": "",
         "payload": "Go",
         "payloadType": "str",
-        "x": 1090,
+        "x": 1030,
         "y": 180,
         "wires": [
             [
-                "4be272d6d92aa129"
+                "955268ae7dd48051"
             ]
         ]
     },
     {
-        "id": "c7f8580ad6d735b2",
+        "id": "191517d692516afe",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Stop",
         "props": [
             {
@@ -138,76 +146,84 @@
         "topic": "",
         "payload": "Stop",
         "payloadType": "str",
-        "x": 1090,
+        "x": 1030,
         "y": 220,
         "wires": [
             [
-                "4be272d6d92aa129"
+                "955268ae7dd48051"
             ]
         ]
     },
     {
-        "id": "e580aea96b24b58a",
+        "id": "0fe52c0313f3584d",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Immersion_heater_off",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_off",
+        "action": "homeassistant.turn_off",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.immersion_heater_off_r_1f_tp50"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "json",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1620,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1560,
         "y": 160,
         "wires": [
             [
-                "74189ce2fcde8e81"
+                "74252149d1a48e3a"
             ]
         ]
     },
     {
-        "id": "2169abaa8d065f1e",
+        "id": "19f2eda43c04295a",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Immersion_heater_on",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_off",
+        "action": "homeassistant.turn_off",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.immersion_heater_on_r_1f_tp60"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "json",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1620,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1560,
         "y": 240,
         "wires": [
             [
-                "13129f5693128725"
+                "c981fcb06c69ac5b"
             ]
         ]
     },
     {
-        "id": "130896af31953fbb",
+        "id": "6ebc9eb43b37982f",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "debugOn",
         "active": false,
         "tosidebar": true,
@@ -217,14 +233,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1580,
+        "x": 1520,
         "y": 120,
         "wires": []
     },
     {
-        "id": "5c04572fcef6127d",
+        "id": "570f4488f6424cfb",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "debugOff",
         "active": false,
         "tosidebar": true,
@@ -234,14 +250,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1580,
+        "x": 1520,
         "y": 300,
         "wires": []
     },
     {
-        "id": "e05d9f1e0a5c4f46",
+        "id": "892eab89194eef05",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "offOnce",
         "op1": "true",
         "op2": "false",
@@ -255,19 +271,19 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1420,
+        "x": 1360,
         "y": 240,
         "wires": [
             [
-                "2169abaa8d065f1e",
-                "5c04572fcef6127d"
+                "19f2eda43c04295a",
+                "570f4488f6424cfb"
             ]
         ]
     },
     {
-        "id": "46245aa401524e91",
+        "id": "70cebb4668aaedcd",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "onOnce",
         "op1": "true",
         "op2": "false",
@@ -281,19 +297,19 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1420,
+        "x": 1360,
         "y": 160,
         "wires": [
             [
-                "e580aea96b24b58a",
-                "130896af31953fbb"
+                "0fe52c0313f3584d",
+                "6ebc9eb43b37982f"
             ]
         ]
     },
     {
-        "id": "fbe4e52c346093ce",
+        "id": "c6ffeae2215539ff",
         "type": "change",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "cleans all var",
         "rules": [
             {
@@ -362,18 +378,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1230,
+        "x": 1170,
         "y": 120,
         "wires": [
             [
-                "0e5709d9db1c0af5"
+                "954586d389e3165f"
             ]
         ]
     },
     {
-        "id": "0e5709d9db1c0af5",
+        "id": "954586d389e3165f",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -382,14 +398,14 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1390,
+        "x": 1330,
         "y": 120,
         "wires": []
     },
     {
-        "id": "9dc26d77ad5ff045",
+        "id": "150b7c67d728e518",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "props": [
             {
@@ -407,18 +423,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1080,
+        "x": 1020,
         "y": 120,
         "wires": [
             [
-                "fbe4e52c346093ce"
+                "c6ffeae2215539ff"
             ]
         ]
     },
     {
-        "id": "a311f11e75aa62c8",
+        "id": "15cb49e4864c450e",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Bat=90",
         "props": [
             {
@@ -436,18 +452,18 @@
         "topic": "",
         "payload": "90",
         "payloadType": "num",
-        "x": 490,
+        "x": 430,
         "y": 280,
         "wires": [
             [
-                "ee7d7ab5350db08a"
+                "69cc8881bbec74ca"
             ]
         ]
     },
     {
-        "id": "ac26d6cc70013534",
+        "id": "1346995d72e6ecae",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Bat=50",
         "props": [
             {
@@ -465,18 +481,18 @@
         "topic": "",
         "payload": "50",
         "payloadType": "num",
-        "x": 490,
+        "x": 430,
         "y": 360,
         "wires": [
             [
-                "ee7d7ab5350db08a"
+                "69cc8881bbec74ca"
             ]
         ]
     },
     {
-        "id": "ee7d7ab5350db08a",
+        "id": "69cc8881bbec74ca",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "batData",
         "func": "flow.set(\"batteryState\",msg.payload);\nreturn msg;",
         "outputs": 1,
@@ -484,21 +500,21 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
+        "x": 580,
         "y": 300,
         "wires": [
             [
-                "07029d44652373fe",
-                "92aa18dcc3093752",
-                "edbb180dad47ebfe",
-                "01a14ae8aa9f7f80"
+                "abd7d6a28e26e38f",
+                "68c964b00e15d4d4",
+                "57a1622de02d6692",
+                "d21a031f123fe746"
             ]
         ]
     },
     {
-        "id": "07029d44652373fe",
+        "id": "abd7d6a28e26e38f",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "testDebug",
         "active": false,
         "tosidebar": true,
@@ -508,14 +524,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
+        "x": 770,
         "y": 300,
         "wires": []
     },
     {
-        "id": "86a8068291a856dc",
+        "id": "11fe528fa0e4bcc3",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "PV<2000",
         "props": [
             {
@@ -533,18 +549,18 @@
         "topic": "",
         "payload": "1999",
         "payloadType": "num",
-        "x": 480,
+        "x": 420,
         "y": 220,
         "wires": [
             [
-                "e59bb09cde1d4c6d"
+                "edfb45cf3e74ab1e"
             ]
         ]
     },
     {
-        "id": "e59bb09cde1d4c6d",
+        "id": "edfb45cf3e74ab1e",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "pvData",
         "func": "flow.set(\"pvState\",msg.payload);\nreturn msg;\n",
         "outputs": 1,
@@ -552,21 +568,21 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
+        "x": 580,
         "y": 200,
         "wires": [
             [
-                "563bd40a14a91aef",
-                "92aa18dcc3093752",
-                "edbb180dad47ebfe",
-                "01a14ae8aa9f7f80"
+                "8483bcdde1ec3d46",
+                "68c964b00e15d4d4",
+                "57a1622de02d6692",
+                "d21a031f123fe746"
             ]
         ]
     },
     {
-        "id": "a2d85d1cfa7e36dc",
+        "id": "7541c58110c9a9d0",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "PV>=2000",
         "props": [
             {
@@ -584,18 +600,18 @@
         "topic": "",
         "payload": "2001",
         "payloadType": "num",
-        "x": 480,
+        "x": 420,
         "y": 180,
         "wires": [
             [
-                "e59bb09cde1d4c6d"
+                "edfb45cf3e74ab1e"
             ]
         ]
     },
     {
-        "id": "563bd40a14a91aef",
+        "id": "8483bcdde1ec3d46",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "testPVDebug",
         "active": false,
         "tosidebar": true,
@@ -605,34 +621,34 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
+        "x": 770,
         "y": 240,
         "wires": []
     },
     {
-        "id": "92aa18dcc3093752",
+        "id": "68c964b00e15d4d4",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "immersionFunction",
-        "func": "var pvPower=flow.get(\"pvState\");\nvar battery=flow.get(\"batteryState\");\nvar feed = parseInt(flow.get(\"feedin\"));\nvar timeNow=flow.get(\"time\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar immersionHeaterBoost = flow.get(\"immersionHeaterBoost\");\nvar nestOccupied = flow.get(\"nestOccupied\");\nvar immersionOverUse = flow.get(\"immersionOverUse\");\n\n//if (OACurrentRate = \"NaN\"){\n//    flow.set(\"OACurrentRate\", 999);\n//}\n\nif (OACurrentRate <= '0' && battery <= '10') {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate <= '9' && battery <= '10' && nestOccupied === \"on\") {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate > '0' && battery > '10' || OACurrentRate === \"NaN\" && battery > '10') {\n    if (immersionHeaterBoost == \"active\"){\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else {\n        if (immersionOverUse != \"Pause\"){\n//    else if (immersionHeaterBoost != \"active\"){    \n        if (timeNow >= '6' && timeNow <= '12') {\n            if (pvPower >= '2000') {\n                if (battery >= '30') {\n                    if (feed >= -2000) {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= -2000) {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '13' && timeNow <= '14' && pvPower >= '2000' && feed >= -2000) {\n            if (battery >= '80'){\n                msg.payload = \"Go\";\n                return msg;\n            }\n            else if (battery <= '60'){\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '15' && timeNow <= '19') {\n            if (pvPower >= '2000') {\n                if (battery >= '80') {\n                    if (feed >= -2000) {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '65') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= -2000) {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '50') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload=\"Stop\";\n                return msg;\n            }\n        }\n        else {\n            msg.payload = \"Stop\";\n            return msg;\n        }\n    }\n    }\n}\nelse {\n    msg.payload=\"Stop\";\n    return msg;\n}\nreturn msg;",
+        "func": "var pvPower=flow.get(\"pvState\");\nvar battery=flow.get(\"batteryState\");\nvar feed = parseInt(flow.get(\"feedin\"));\nvar timeNow=flow.get(\"time\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar immersionHeaterBoost = flow.get(\"immersionHeaterBoost\");\nvar nestOccupied = flow.get(\"nestOccupied\");\nvar immersionOverUse = flow.get(\"immersionOverUse\");\n\n//if (OACurrentRate = \"NaN\"){\n//    flow.set(\"OACurrentRate\", 999);\n//}\n\nif (immersionHeaterBoost == \"active\") {\n    msg.payload = \"Go\";\n    return msg;\n} \nelse if (OACurrentRate <= '0' && battery <= '10') {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate <= '9' && battery <= '10' && nestOccupied === \"on\") {\n    msg.payload = \"Go\";\n    return msg;\n}\nelse if (OACurrentRate > '0' && battery > '10' || OACurrentRate === \"NaN\" && battery > '10') {\n      if (immersionOverUse != \"Pause\"){ \n        if (timeNow >= '6' && timeNow <= '12') {\n            if (pvPower >= '2000') {\n                if (battery >= '30') {\n                    if (feed >= -2000) {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= -2000) {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '13' && timeNow <= '14' && pvPower >= '2000' && feed >= -2000) {\n            if (battery >= '80'){\n                msg.payload = \"Go\";\n                return msg;\n            }\n            else if (battery <= '60'){\n                msg.payload = \"Stop\";\n                return msg;\n            }\n        }\n        else if (timeNow >= '15' && timeNow <= '19') {\n            if (pvPower >= '2000') {\n                if (battery >= '80') {\n                    if (feed >= -2000) {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if(battery <= '65') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else if (pvPower >= '3000') {\n                if (battery >= '65') {\n                    if (feed >= -2000) {\n                        msg.payload=\"Go\";\n                        return msg;\n                    }\n                    else {\n                        msg.payload=\"Stop\";\n                        return msg;\n                    }\n                }\n                else if (battery <= '50') {\n                    msg.payload=\"Stop\";\n                    return msg;\n                }\n            }\n            else {\n                msg.payload=\"Stop\";\n                return msg;\n            }\n        }\n        else {\n            msg.payload = \"Stop\";\n            return msg;\n        }\n    }\n}\nelse {\n    msg.payload=\"Stop\";\n    return msg;\n}\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 850,
+        "x": 790,
         "y": 200,
         "wires": [
             [
-                "4be272d6d92aa129"
+                "955268ae7dd48051"
             ]
         ]
     },
     {
-        "id": "76bb9cd21ce04222",
+        "id": "a2d415cbdec648ed",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Bat=75",
         "props": [
             {
@@ -646,18 +662,18 @@
         "topic": "",
         "payload": "75",
         "payloadType": "num",
-        "x": 490,
+        "x": 430,
         "y": 320,
         "wires": [
             [
-                "ee7d7ab5350db08a"
+                "69cc8881bbec74ca"
             ]
         ]
     },
     {
-        "id": "b05b1a013b35fddd",
+        "id": "c668c033d2e26bd8",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "feedin>=5000",
         "props": [
             {
@@ -675,18 +691,18 @@
         "topic": "",
         "payload": "5000",
         "payloadType": "num",
-        "x": 470,
+        "x": 410,
         "y": 100,
         "wires": [
             [
-                "68279146eb924a04"
+                "e2f1946d812c1cfa"
             ]
         ]
     },
     {
-        "id": "137871247e80c6df",
+        "id": "b236e2e21e242118",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "feedin<2000",
         "props": [
             {
@@ -704,18 +720,18 @@
         "topic": "",
         "payload": "-2999",
         "payloadType": "num",
-        "x": 470,
+        "x": 410,
         "y": 140,
         "wires": [
             [
-                "68279146eb924a04"
+                "e2f1946d812c1cfa"
             ]
         ]
     },
     {
-        "id": "68279146eb924a04",
+        "id": "e2f1946d812c1cfa",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "feedin",
         "func": "flow.set(\"feedin\",msg.payload);\nreturn msg;\n",
         "outputs": 1,
@@ -723,22 +739,22 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
+        "x": 570,
         "y": 120,
         "wires": [
             [
-                "92aa18dcc3093752",
-                "f9547f731bfdca5a",
-                "edbb180dad47ebfe",
-                "14a57caecd71b271",
-                "da52072829560e75"
+                "68c964b00e15d4d4",
+                "73cc16951171af13",
+                "57a1622de02d6692",
+                "2c156e68a68c8447",
+                "49108c7f64ff58ae"
             ]
         ]
     },
     {
-        "id": "f9547f731bfdca5a",
+        "id": "73cc16951171af13",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "testfeedin",
         "active": false,
         "tosidebar": true,
@@ -748,21 +764,26 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 780,
+        "x": 720,
         "y": 120,
         "wires": []
     },
     {
-        "id": "cf7b180aca61342c",
+        "id": "a7a1d2ff03894719",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Solax acpower",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "sensor.solax_acpower",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "sensor.solax_acpower"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "num",
         "ifState": "",
@@ -785,19 +806,19 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 280,
+        "x": 220,
         "y": 420,
         "wires": [
             [
-                "da711538f27a2af1",
-                "c731d3063ab18606"
+                "4c0917f00b2e0be8",
+                "096cf5e19e15cbe3"
             ]
         ]
     },
     {
-        "id": "da711538f27a2af1",
+        "id": "4c0917f00b2e0be8",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "test acpower",
         "active": false,
         "tosidebar": true,
@@ -807,14 +828,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
+        "x": 770,
         "y": 380,
         "wires": []
     },
     {
-        "id": "c731d3063ab18606",
+        "id": "096cf5e19e15cbe3",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "acData",
         "func": "flow.set(\"tempAcPowerState\", msg.payload);\nreturn msg;",
         "outputs": 1,
@@ -822,18 +843,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
+        "x": 580,
         "y": 420,
         "wires": [
             [
-                "edbb180dad47ebfe"
+                "57a1622de02d6692"
             ]
         ]
     },
     {
-        "id": "ebaeac2700d6d68a",
+        "id": "4f1056bd4f8054ef",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "debugAcUsed",
         "active": false,
         "tosidebar": true,
@@ -843,14 +864,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1020,
+        "x": 960,
         "y": 400,
         "wires": []
     },
     {
-        "id": "56549d891ebecd67",
+        "id": "fe11c8bed9e45a7a",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "acPower=50",
         "props": [
             {
@@ -868,18 +889,18 @@
         "topic": "",
         "payload": "50",
         "payloadType": "num",
-        "x": 470,
+        "x": 410,
         "y": 440,
         "wires": [
             [
-                "c731d3063ab18606"
+                "096cf5e19e15cbe3"
             ]
         ]
     },
     {
-        "id": "ed475e850255b224",
+        "id": "f97cac03ba1e1a84",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "acPower=81",
         "props": [
             {
@@ -897,18 +918,18 @@
         "topic": "",
         "payload": "81",
         "payloadType": "num",
-        "x": 470,
+        "x": 410,
         "y": 400,
         "wires": [
             [
-                "c731d3063ab18606"
+                "096cf5e19e15cbe3"
             ]
         ]
     },
     {
-        "id": "c9989801686195ea",
+        "id": "d6da1b12fddd82ce",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "time",
         "func": "flow.set(\"time\", Number(msg.payload));\nreturn msg;\n",
         "outputs": 1,
@@ -916,20 +937,20 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
+        "x": 570,
         "y": 560,
         "wires": [
             [
-                "92aa18dcc3093752",
-                "f68ca66e064ab8df",
-                "01a14ae8aa9f7f80"
+                "68c964b00e15d4d4",
+                "cc7d9df86ca5d51d",
+                "d21a031f123fe746"
             ]
         ]
     },
     {
-        "id": "27dc95101bd6a729",
+        "id": "819e18fa9c59761a",
         "type": "moment",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Time",
         "topic": "",
         "input": "",
@@ -943,18 +964,18 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/London",
-        "x": 490,
+        "x": 430,
         "y": 560,
         "wires": [
             [
-                "c9989801686195ea"
+                "d6da1b12fddd82ce"
             ]
         ]
     },
     {
-        "id": "5c4a017410537ff6",
+        "id": "e570a201305d3e7b",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "props": [
             {
@@ -972,18 +993,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 270,
+        "x": 210,
         "y": 560,
         "wires": [
             [
-                "27dc95101bd6a729"
+                "819e18fa9c59761a"
             ]
         ]
     },
     {
-        "id": "f68ca66e064ab8df",
+        "id": "cc7d9df86ca5d51d",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "test time",
         "active": false,
         "tosidebar": true,
@@ -993,14 +1014,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 820,
+        "x": 760,
         "y": 560,
         "wires": []
     },
     {
-        "id": "de21cfdc9c2f5826",
+        "id": "e059919a3398bad6",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Bubbles Off",
         "props": [
             {
@@ -1018,18 +1039,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1510,
+        "x": 1450,
         "y": 900,
         "wires": [
             [
-                "482614479a4b5cb4"
+                "3a76e7f659dc3a6d"
             ]
         ]
     },
     {
-        "id": "a0fdfb4dee0edd6d",
+        "id": "815be497c4f90744",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Bubbles On",
         "props": [
             {
@@ -1047,128 +1068,144 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1510,
+        "x": 1450,
         "y": 840,
         "wires": [
             [
-                "2e2b259d64d3b114"
+                "7c7813d3a39e7b4c"
             ]
         ]
     },
     {
-        "id": "482614479a4b5cb4",
+        "id": "3a76e7f659dc3a6d",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Bubbles Off",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_off",
+        "action": "homeassistant.turn_off",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.spa_bubbles"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "jsonata",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1690,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1630,
         "y": 920,
         "wires": [
             []
         ]
     },
     {
-        "id": "2e2b259d64d3b114",
+        "id": "7c7813d3a39e7b4c",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Bubbles On",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_on",
+        "action": "homeassistant.turn_on",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.spa_bubbles"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "jsonata",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1690,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "x": 1630,
         "y": 860,
         "wires": [
             []
         ]
     },
     {
-        "id": "20f6d2d1352b8f05",
+        "id": "9b72de2eb1b4f495",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Filter On",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_on",
+        "action": "homeassistant.turn_on",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.spa_filter"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "jsonata",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1680,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "x": 1620,
         "y": 980,
         "wires": [
             []
         ]
     },
     {
-        "id": "5a5ec9c82f1c887c",
+        "id": "669142409fc01585",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Filter Off",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_off",
+        "action": "homeassistant.turn_off",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.spa_filter"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "jsonata",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1680,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1620,
         "y": 1040,
         "wires": [
             [
-                "df445a9233051b5b"
+                "ab6742b18a7ce36d"
             ]
         ]
     },
     {
-        "id": "bd697307f77be6e7",
+        "id": "992f08c9ac2c2862",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Filter Off",
         "props": [
             {
@@ -1186,18 +1223,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1520,
+        "x": 1460,
         "y": 1020,
         "wires": [
             [
-                "5a5ec9c82f1c887c"
+                "669142409fc01585"
             ]
         ]
     },
     {
-        "id": "739c0b92c919c2a4",
+        "id": "3aacbc014606f8eb",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Filter On",
         "props": [
             {
@@ -1215,47 +1252,51 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1520,
+        "x": 1460,
         "y": 960,
         "wires": [
             [
-                "20f6d2d1352b8f05"
+                "9b72de2eb1b4f495"
             ]
         ]
     },
     {
-        "id": "0ce54c7a704e23a2",
+        "id": "cc13b8018570b30d",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Heat Off",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_off",
+        "action": "homeassistant.turn_off",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "climate.spa_thermostat"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "jsonata",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1680,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1620,
         "y": 1160,
         "wires": [
             [
-                "5a5ec9c82f1c887c"
+                "669142409fc01585"
             ]
         ]
     },
     {
-        "id": "815f8367d3908c93",
+        "id": "bf673bd63a31fd6a",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Heat Off",
         "props": [
             {
@@ -1273,45 +1314,49 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1520,
+        "x": 1460,
         "y": 1140,
         "wires": [
             [
-                "0ce54c7a704e23a2"
+                "cc13b8018570b30d"
             ]
         ]
     },
     {
-        "id": "9fb9cd229f1e5e6d",
+        "id": "d5f0c6c5732aee56",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Heat On",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_on",
+        "action": "homeassistant.turn_on",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "climate.spa_thermostat"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "jsonata",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1680,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "x": 1620,
         "y": 1100,
         "wires": [
             []
         ]
     },
     {
-        "id": "7dd2c9c51bc6905f",
+        "id": "79a1b53c7fc0c226",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Heat On",
         "props": [
             {
@@ -1329,18 +1374,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1520,
+        "x": 1460,
         "y": 1080,
         "wires": [
             [
-                "9fb9cd229f1e5e6d"
+                "d5f0c6c5732aee56"
             ]
         ]
     },
     {
-        "id": "235ba53861fbb416",
+        "id": "4538b1a27d958c93",
         "type": "switch",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "bubbles",
         "property": "payload",
         "propertyType": "msg",
@@ -1359,23 +1404,23 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1000,
+        "x": 940,
         "y": 920,
         "wires": [
             [
-                "957b337c3342c088",
-                "5db5bc1e93993b48"
+                "5fc18dc603e337d5",
+                "8cb7ebf0676710c2"
             ],
             [
-                "957b337c3342c088",
-                "5db5bc1e93993b48"
+                "5fc18dc603e337d5",
+                "8cb7ebf0676710c2"
             ]
         ]
     },
     {
-        "id": "84683fea82fdf23f",
+        "id": "43796a5bcb30a419",
         "type": "switch",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "filter",
         "property": "payload",
         "propertyType": "msg",
@@ -1394,23 +1439,23 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1010,
+        "x": 950,
         "y": 960,
         "wires": [
             [
-                "53ae4d289a04c5ca",
-                "ccc74e2aa70f4598"
+                "74d3b8e19bc873a4",
+                "cb95bbf99ac9bd6c"
             ],
             [
-                "53ae4d289a04c5ca",
-                "ccc74e2aa70f4598"
+                "74d3b8e19bc873a4",
+                "cb95bbf99ac9bd6c"
             ]
         ]
     },
     {
-        "id": "01c514d0b1ded6ec",
+        "id": "426e4688578ab133",
         "type": "switch",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Heat",
         "property": "payload",
         "propertyType": "msg",
@@ -1429,23 +1474,23 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1010,
+        "x": 950,
         "y": 1000,
         "wires": [
             [
-                "923500cb0a81c3b9",
-                "6e2d3c8d582df549"
+                "2b94aac6f90e3d0e",
+                "ef9e432b1a2bfcc6"
             ],
             [
-                "6e2d3c8d582df549",
-                "923500cb0a81c3b9"
+                "ef9e432b1a2bfcc6",
+                "2b94aac6f90e3d0e"
             ]
         ]
     },
     {
-        "id": "5db5bc1e93993b48",
+        "id": "8cb7ebf0676710c2",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "offOnce",
         "op1": "true",
         "op2": "false",
@@ -1459,18 +1504,18 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1240,
+        "x": 1180,
         "y": 920,
         "wires": [
             [
-                "482614479a4b5cb4"
+                "3a76e7f659dc3a6d"
             ]
         ]
     },
     {
-        "id": "957b337c3342c088",
+        "id": "5fc18dc603e337d5",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "onOnce",
         "op1": "true",
         "op2": "false",
@@ -1484,18 +1529,18 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1240,
+        "x": 1180,
         "y": 880,
         "wires": [
             [
-                "2e2b259d64d3b114"
+                "7c7813d3a39e7b4c"
             ]
         ]
     },
     {
-        "id": "53ae4d289a04c5ca",
+        "id": "74d3b8e19bc873a4",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "onOnce",
         "op1": "true",
         "op2": "false",
@@ -1509,18 +1554,18 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1240,
+        "x": 1180,
         "y": 960,
         "wires": [
             [
-                "20f6d2d1352b8f05"
+                "9b72de2eb1b4f495"
             ]
         ]
     },
     {
-        "id": "ccc74e2aa70f4598",
+        "id": "cb95bbf99ac9bd6c",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "offOnce",
         "op1": "true",
         "op2": "false",
@@ -1534,18 +1579,18 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1240,
+        "x": 1180,
         "y": 1000,
         "wires": [
             [
-                "5a5ec9c82f1c887c"
+                "669142409fc01585"
             ]
         ]
     },
     {
-        "id": "efad56dc099f142d",
+        "id": "ccf1a7abd2b6c06e",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Go",
         "props": [
             {
@@ -1559,18 +1604,18 @@
         "topic": "",
         "payload": "Go",
         "payloadType": "str",
-        "x": 850,
+        "x": 790,
         "y": 960,
         "wires": [
             [
-                "01c514d0b1ded6ec"
+                "426e4688578ab133"
             ]
         ]
     },
     {
-        "id": "fb175c2ab824e4d1",
+        "id": "fbaec4ad9c564e18",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Stop",
         "props": [
             {
@@ -1584,18 +1629,18 @@
         "topic": "",
         "payload": "Stop",
         "payloadType": "str",
-        "x": 850,
+        "x": 790,
         "y": 1040,
         "wires": [
             [
-                "01c514d0b1ded6ec"
+                "426e4688578ab133"
             ]
         ]
     },
     {
-        "id": "6e2d3c8d582df549",
+        "id": "ef9e432b1a2bfcc6",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "offOnce",
         "op1": "true",
         "op2": "false",
@@ -1609,18 +1654,18 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1240,
+        "x": 1180,
         "y": 1160,
         "wires": [
             [
-                "0ce54c7a704e23a2"
+                "cc13b8018570b30d"
             ]
         ]
     },
     {
-        "id": "923500cb0a81c3b9",
+        "id": "2b94aac6f90e3d0e",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "onOnce",
         "op1": "true",
         "op2": "false",
@@ -1634,18 +1679,18 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1240,
+        "x": 1180,
         "y": 1120,
         "wires": [
             [
-                "9fb9cd229f1e5e6d"
+                "d5f0c6c5732aee56"
             ]
         ]
     },
     {
-        "id": "61de9bae97b342cd",
+        "id": "20e3ceeaf33885b4",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "useSpa",
         "func": "flow.set(\"useSpa\",msg.payload);\nreturn msg;\n",
         "outputs": 1,
@@ -1653,18 +1698,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
+        "x": 440,
         "y": 1060,
         "wires": [
             [
-                "01a14ae8aa9f7f80"
+                "d21a031f123fe746"
             ]
         ]
     },
     {
-        "id": "e66fcfbdcc1b46df",
+        "id": "163ec56e0168f7f7",
         "type": "api-current-state",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "spaThermostat",
         "server": "315411fb.df557e",
         "version": 3,
@@ -1691,20 +1736,20 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 320,
+        "x": 260,
         "y": 1120,
         "wires": [
             [
-                "cd0de887eb15069c",
-                "b82b0653ec35053c",
-                "b3b9d2e3ceb30528"
+                "636622c3a03cacf7",
+                "4cd9ce876ad379c6",
+                "7653df1664e27f7c"
             ]
         ]
     },
     {
-        "id": "558e489c4c59738c",
+        "id": "628187c3e3f6b92a",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "props": [
             {
@@ -1722,18 +1767,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 150,
+        "x": 90,
         "y": 1120,
         "wires": [
             [
-                "e66fcfbdcc1b46df"
+                "163ec56e0168f7f7"
             ]
         ]
     },
     {
-        "id": "79cd0b2e3b946642",
+        "id": "3ff895f1b4099752",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "useSpa",
         "func": "flow.set(\"autoSpa\",msg.payload);\nreturn msg;\n",
         "outputs": 1,
@@ -1741,18 +1786,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
+        "x": 440,
         "y": 1000,
         "wires": [
             [
-                "01a14ae8aa9f7f80"
+                "d21a031f123fe746"
             ]
         ]
     },
     {
-        "id": "cd0de887eb15069c",
+        "id": "636622c3a03cacf7",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "spaTemp",
         "func": "flow.set(\"spaTemp\", msg.payload.attributes.current_temperature);\nreturn msg;",
         "outputs": 1,
@@ -1760,18 +1805,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
+        "x": 440,
         "y": 1100,
         "wires": [
             [
-                "01a14ae8aa9f7f80"
+                "d21a031f123fe746"
             ]
         ]
     },
     {
-        "id": "b82b0653ec35053c",
+        "id": "4cd9ce876ad379c6",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "spaTarget",
         "func": "flow.set(\"spaTarget\", msg.payload.attributes.temperature);\nreturn msg;",
         "outputs": 1,
@@ -1779,20 +1824,20 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
+        "x": 440,
         "y": 1140,
         "wires": [
             [
-                "01a14ae8aa9f7f80",
-                "69cb80f5eb1fa2fa"
+                "d21a031f123fe746",
+                "84649411d881fd81"
             ]
         ]
     },
     {
-        "id": "b3b9d2e3ceb30528",
+        "id": "7653df1664e27f7c",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
-        "name": "debug 36",
+        "z": "76fe4d1933966a7e",
+        "name": "debug 46",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -1800,14 +1845,14 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
+        "x": 640,
         "y": 1120,
         "wires": []
     },
     {
-        "id": "a19c2daec4badd57",
+        "id": "0697474bb541892b",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "OACurrentRate",
         "active": false,
         "tosidebar": true,
@@ -1817,14 +1862,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 840,
+        "x": 780,
         "y": 640,
         "wires": []
     },
     {
-        "id": "85659c99300c50a4",
+        "id": "a2bf041cf8ab3381",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "OACurrentRate",
         "func": "//if (msg.payload = \"NaN\") {\n//    flow.set(\"OACurrentRate\", 999);\n//}\n//else {\n    flow.set(\"OACurrentRate\", Number(msg.payload));\n//}\nreturn msg;\n",
         "outputs": 1,
@@ -1832,27 +1877,32 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
+        "x": 540,
         "y": 640,
         "wires": [
             [
-                "a19c2daec4badd57",
-                "92aa18dcc3093752",
-                "01a14ae8aa9f7f80"
+                "0697474bb541892b",
+                "68c964b00e15d4d4",
+                "d21a031f123fe746"
             ]
         ]
     },
     {
-        "id": "0a467ee348713d1f",
+        "id": "4cfc04be2cb0ce98",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "useSpa",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "input_boolean.usespa",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "input_boolean.usespa"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "str",
         "ifState": "",
@@ -1875,25 +1925,30 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 350,
+        "x": 290,
         "y": 1060,
         "wires": [
             [
-                "61de9bae97b342cd"
+                "20e3ceeaf33885b4"
             ]
         ]
     },
     {
-        "id": "e75c3f9111772cfb",
+        "id": "6299728ee7b8f1c8",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "autoSpa",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "input_boolean.autospa",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "input_boolean.autospa"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "str",
         "ifState": "",
@@ -1928,19 +1983,19 @@
                 "valueType": "triggerId"
             }
         ],
-        "x": 340,
+        "x": 280,
         "y": 1000,
         "wires": [
             [
-                "79cd0b2e3b946642"
+                "3ff895f1b4099752"
             ]
         ]
     },
     {
-        "id": "c15c4dce2ba30358",
+        "id": "cb8277fd83353e9a",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
-        "name": "debug 37",
+        "z": "76fe4d1933966a7e",
+        "name": "debug 47",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -1948,14 +2003,14 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 800,
+        "x": 740,
         "y": 40,
         "wires": []
     },
     {
-        "id": "905676d93b109279",
+        "id": "7aa3db3ce30c7e27",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "immersionHeaterBoost",
         "func": "flow.set(\"immersionHeaterBoost\",msg.payload);\nreturn msg;\n",
         "outputs": 1,
@@ -1963,26 +2018,31 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
+        "x": 520,
         "y": 40,
         "wires": [
             [
-                "92aa18dcc3093752",
-                "c15c4dce2ba30358"
+                "68c964b00e15d4d4",
+                "cb8277fd83353e9a"
             ]
         ]
     },
     {
-        "id": "e277a20da22e4388",
+        "id": "578b92036b72b246",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "immersionHeeterBoost",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "timer.immersion_heater_boost",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "timer.immersion_heater_boost"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "str",
         "ifState": "",
@@ -2017,25 +2077,30 @@
                 "valueType": "triggerId"
             }
         ],
-        "x": 360,
+        "x": 300,
         "y": 40,
         "wires": [
             [
-                "905676d93b109279"
+                "7aa3db3ce30c7e27"
             ]
         ]
     },
     {
-        "id": "f73a45fd2ae8e519",
+        "id": "026eb5081e203d78",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Solax Battary",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "sensor.solax_battery",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "sensor.solax_battery"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "num",
         "ifState": "",
@@ -2058,25 +2123,30 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 290,
+        "x": 230,
         "y": 300,
         "wires": [
             [
-                "ee7d7ab5350db08a"
+                "69cc8881bbec74ca"
             ]
         ]
     },
     {
-        "id": "047f2ccdd1b18506",
+        "id": "53d412a6bb9e4d66",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Solax PV power",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "sensor.solax_feedinpowerm2",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "sensor.solax_feedinpowerm2"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "num",
         "ifState": "",
@@ -2099,25 +2169,30 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 280,
+        "x": 220,
         "y": 200,
         "wires": [
             [
-                "e59bb09cde1d4c6d"
+                "edfb45cf3e74ab1e"
             ]
         ]
     },
     {
-        "id": "e89f082a451a3f7b",
+        "id": "45cb5ee1b8ef4c19",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Solax feedinpower",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "sensor.solax_feedinpower",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "sensor.solax_feedinpower"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "num",
         "ifState": "",
@@ -2140,25 +2215,30 @@
                 "valueType": "entityState"
             }
         ],
-        "x": 270,
+        "x": 210,
         "y": 120,
         "wires": [
             [
-                "68279146eb924a04"
+                "e2f1946d812c1cfa"
             ]
         ]
     },
     {
-        "id": "4848e129e89799e9",
+        "id": "0333a3d61074f4e9",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "OACurrentRate",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "sensor.octopus_agile_current_rate",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "sensor.octopus_agile_current_rate"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "str",
         "ifState": "",
@@ -2193,18 +2273,18 @@
                 "valueType": "triggerId"
             }
         ],
-        "x": 420,
+        "x": 360,
         "y": 640,
         "wires": [
             [
-                "85659c99300c50a4"
+                "a2bf041cf8ab3381"
             ]
         ]
     },
     {
-        "id": "dcb436a492118aef",
+        "id": "c0d1fded88af4344",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "time>=13",
         "props": [
             {
@@ -2222,18 +2302,18 @@
         "topic": "",
         "payload": "13",
         "payloadType": "num",
-        "x": 260,
+        "x": 200,
         "y": 520,
         "wires": [
             [
-                "c9989801686195ea"
+                "d6da1b12fddd82ce"
             ]
         ]
     },
     {
-        "id": "86619ea2810323ed",
+        "id": "01246bcbdeec0e6d",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "time>=9",
         "props": [
             {
@@ -2251,18 +2331,18 @@
         "topic": "",
         "payload": "9",
         "payloadType": "num",
-        "x": 260,
+        "x": 200,
         "y": 640,
         "wires": [
             [
-                "c9989801686195ea"
+                "d6da1b12fddd82ce"
             ]
         ]
     },
     {
-        "id": "13661523457a446b",
+        "id": "1cc8add55aef4664",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "time>=14",
         "props": [
             {
@@ -2280,18 +2360,18 @@
         "topic": "",
         "payload": "14",
         "payloadType": "num",
-        "x": 260,
+        "x": 200,
         "y": 480,
         "wires": [
             [
-                "c9989801686195ea"
+                "d6da1b12fddd82ce"
             ]
         ]
     },
     {
-        "id": "2d034fe31d112ec5",
+        "id": "2e5bdd9d7ace7262",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "time>=12",
         "props": [
             {
@@ -2309,18 +2389,18 @@
         "topic": "",
         "payload": "12",
         "payloadType": "num",
-        "x": 260,
+        "x": 200,
         "y": 600,
         "wires": [
             [
-                "c9989801686195ea"
+                "d6da1b12fddd82ce"
             ]
         ]
     },
     {
-        "id": "edbb180dad47ebfe",
+        "id": "57a1622de02d6692",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "acDataUpdater",
         "func": "var pvPower=flow.get(\"pvState\");\nvar feedin=flow.get(\"feedin\");\nvar tempAcPowerState = flow.get(\"tempAcPowerState\");\ncontext.set(\"tempPvPowAcPow\", pvPower + tempAcPowerState);\nvar tempPvPowAcPow = context.get(\"tempPvPowAcPow\");\ncontext.set(\"tempPvPowAcPowfeedin\", tempPvPowAcPow - feedin );\nvar tempPvPowAcPowfeedin = context.get(\"tempPvPowAcPowfeedin\");\n//flow.set(\"acPowerUsage\", pvPower + tempAcPowerState - feedin);\nflow.set(\"acPowerUsageUpdater\", tempPvPowAcPowfeedin);\nmsg.payload = \"acPowerUsageUpdater\";\nreturn msg;",
         "outputs": 1,
@@ -2328,19 +2408,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 840,
+        "x": 780,
         "y": 420,
         "wires": [
             [
-                "ebaeac2700d6d68a",
-                "c8c6b3f78769c830"
+                "4f1056bd4f8054ef",
+                "0174cf8121af2114"
             ]
         ]
     },
     {
-        "id": "01a14ae8aa9f7f80",
+        "id": "d21a031f123fe746",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "spaFunction",
         "func": "var pvPower = flow.get(\"pvState\");\nvar battery = flow.get(\"batteryState\");\nvar feed = parseInt(flow.get (\"feedin\"));\nvar timeNow = flow.get(\"time\");\nvar useSpa = flow.get(\"useSpa\");\nvar autoSpa = flow.get(\"autoSpa\");\nvar spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\nvar OACurrentRate = flow.get(\"OACurrentRate\");\nvar pauseSpa = flow.get(\"pauseSpa\");\nvar acPowerUsage = flow.get(\"acPowerUsageUpdater\");\nvar spaOverUse = flow.get(\"spaOverUse\");\n//var spaTargetTemp = flow.get(\"spaTarget\");\n\n\nif (useSpa === \"on\" && timeNow <= '2') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '3' && timeNow <= '7' && OACurrentRate <= '0') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"on\" && timeNow >= '8') {\n    msg.payload = \"Go\";\n}\nelse if (useSpa === \"off\") {\n    if (OACurrentRate <= '0' && battery <= '10') {\n        msg.payload = \"Go\";\n        return msg;\n    }\n    else if (OACurrentRate > '0') {\n        if (autoSpa === \"on\") {\n            if (pauseSpa != \"Pause\" && spaOverUse != \"Pause\"){\n                if (timeNow >= '8' && timeNow <= '9' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '80') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery >= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n                if (timeNow >= '7' && timeNow <= '9' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '40') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery >= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n                }\n            if (timeNow >= '10' && timeNow <= '11' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '30') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery >= '20') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            if (timeNow >= '12' && timeNow <= '14' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '40') {\n                    msg.payload = \"Go\";\n                    return msg;\n                    }\n                else if (battery <= '20') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }    \n            else if (timeNow >= '12' && timeNow <= '14' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget){\n                if (battery >= '65') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '50') {\n                    msg.payload = \"Stop\";\n                    return msg;\n                }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '2000' && feed >= -1000 && spaTemp <= spaTarget) {\n                if (battery >= '80') {\n                    msg.payload = \"Go\";\n                    return msg;\n                }\n                else if (battery <= '64') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else if (timeNow > '14' && timeNow <= '20' && pvPower >= '3000' && feed >= -1000 && spaTemp <= spaTarget) {\n                    if (battery >= '65') {\n                        msg.payload = \"Go\";\n                        return msg;\n                    }\n                    else if (battery <= '50') {\n                        msg.payload = \"Stop\";\n                        return msg;\n                    }\n            }\n            else {\n                msg.payload = \"Stop\";\n                return msg;\n            }\n            }\n            else if (pauseSpa === \"Pause\") {\n                msg.payload = \"Stop\";\n            }\n            return msg;\n        }\n        else if (autoSpa === \"off\") {\n            msg.payload = \"Stop\";\n        }\n    }\n    else if (useSpa === \"off\") {\n        msg.payload = \"Stop\";\n    }\n}\nelse {\n    msg.payload = \"Stop\";\n}\nreturn msg;",
         "outputs": 1,
@@ -2348,29 +2428,30 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 850,
+        "x": 790,
         "y": 1000,
         "wires": [
             [
-                "01c514d0b1ded6ec"
+                "426e4688578ab133"
             ]
         ]
     },
     {
-        "id": "c8c6b3f78769c830",
+        "id": "0174cf8121af2114",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "acPowerUsageUpdater",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "input_number",
-        "service": "set_value",
+        "action": "input_number.set_value",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "input_number.acpowerusage"
         ],
+        "labelId": [],
         "data": "{\"value\":\"{{flow.acPowerUsageUpdater}}\"}",
         "dataType": "json",
         "mergeContext": "",
@@ -2384,19 +2465,22 @@
             }
         ],
         "queue": "none",
-        "x": 1050,
+        "blockInputOverrides": false,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 990,
         "y": 440,
         "wires": [
             [
-                "ecad423aa4b5149f"
+                "15f17b370f58987f"
             ]
         ]
     },
     {
-        "id": "ecad423aa4b5149f",
+        "id": "15f17b370f58987f",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
-        "name": "debug 38",
+        "z": "76fe4d1933966a7e",
+        "name": "debug 48",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -2404,21 +2488,26 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1260,
+        "x": 1200,
         "y": 440,
         "wires": []
     },
     {
-        "id": "cade2ac1ed4555cc",
+        "id": "97c6cdc6e247a197",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "nestOccupied",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "input_boolean.nestoccupied",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "input_boolean.nestoccupied"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "str",
         "ifState": "",
@@ -2453,18 +2542,18 @@
                 "valueType": "triggerId"
             }
         ],
-        "x": 430,
+        "x": 370,
         "y": 700,
         "wires": [
             [
-                "bcf5c03d8b49d93d"
+                "9b14d0ef7e946f9d"
             ]
         ]
     },
     {
-        "id": "bcf5c03d8b49d93d",
+        "id": "9b14d0ef7e946f9d",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "nestOccupied",
         "func": "flow.set(\"nestOccupied\",msg.payload);\nreturn msg;\n",
         "outputs": 1,
@@ -2472,18 +2561,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
+        "x": 540,
         "y": 700,
         "wires": [
             [
-                "92aa18dcc3093752"
+                "68c964b00e15d4d4"
             ]
         ]
     },
     {
-        "id": "7bc86166744234c2",
+        "id": "72b270ded8e1bca3",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "op1": "",
         "op2": "Go",
@@ -2497,19 +2586,19 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1030,
+        "x": 970,
         "y": 1160,
         "wires": [
             [
-                "01a14ae8aa9f7f80",
-                "2f7c5a3627652085"
+                "d21a031f123fe746",
+                "d18c964f086bc25b"
             ]
         ]
     },
     {
-        "id": "69cb80f5eb1fa2fa",
+        "id": "84649411d881fd81",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "pauseSpaHeat",
         "func": "var spaTemp = flow.get(\"spaTemp\");\nvar spaTarget = flow.get(\"spaTarget\");\n\nif (spaTemp >= spaTarget){\n    flow.set(\"pauseSpa\", \"Pause\");\n    msg.payload = \"Pause\";\n}\n//else {\n//    flow.set(\"pauseSpa\", \"Go\");\n//    msg.payload = \"Go\";\n//}\n//flow.set(\"pauseSpa\", msg.payload);\nreturn msg;\n",
         "outputs": 1,
@@ -2517,18 +2606,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
+        "x": 620,
         "y": 1160,
         "wires": [
             [
-                "ea896f664d0dc807"
+                "7c4d7af8e6c84373"
             ]
         ]
     },
     {
-        "id": "ea896f664d0dc807",
+        "id": "7c4d7af8e6c84373",
         "type": "switch",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "PauseSwitch",
         "property": "payload",
         "propertyType": "msg",
@@ -2547,19 +2636,19 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 850,
+        "x": 790,
         "y": 1160,
         "wires": [
             [],
             [
-                "7bc86166744234c2"
+                "72b270ded8e1bca3"
             ]
         ]
     },
     {
-        "id": "92e99a174457b76f",
+        "id": "ba6d53bbc610b6d2",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Go",
         "props": [
             {
@@ -2573,18 +2662,18 @@
         "topic": "",
         "payload": "Go",
         "payloadType": "str",
-        "x": 870,
+        "x": 810,
         "y": 1200,
         "wires": [
             [
-                "7bc86166744234c2"
+                "72b270ded8e1bca3"
             ]
         ]
     },
     {
-        "id": "2f7c5a3627652085",
+        "id": "d18c964f086bc25b",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "pauseSpaHeatGo",
         "func": "flow.set(\"pauseSpa\", \"Go\");\nreturn msg;\n",
         "outputs": 1,
@@ -2592,16 +2681,16 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1270,
+        "x": 1210,
         "y": 1220,
         "wires": [
             []
         ]
     },
     {
-        "id": "4bba6738ecfb5a1b",
+        "id": "0fa985558f66d25c",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "PV>=3000",
         "props": [
             {
@@ -2619,18 +2708,18 @@
         "topic": "",
         "payload": "3001",
         "payloadType": "num",
-        "x": 120,
+        "x": 60,
         "y": 180,
         "wires": [
             [
-                "e59bb09cde1d4c6d"
+                "edfb45cf3e74ab1e"
             ]
         ]
     },
     {
-        "id": "14a57caecd71b271",
+        "id": "2c156e68a68c8447",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "pauseSpaHeat",
         "func": "var feed = parseInt(flow.get(\"feedin\"));\n\nif (feed <= -1000){\n    flow.set(\"spaOverUse\", \"Pause\");\n    msg.payload = \"Pause\";\n}\nreturn msg;\n",
         "outputs": 1,
@@ -2638,18 +2727,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
+        "x": 800,
         "y": 780,
         "wires": [
             [
-                "97a3c97dbe7c43e5"
+                "9c77464057ec56ee"
             ]
         ]
     },
     {
-        "id": "97a3c97dbe7c43e5",
+        "id": "9c77464057ec56ee",
         "type": "switch",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "spaOverUsePauseSwitch",
         "property": "payload",
         "propertyType": "msg",
@@ -2668,19 +2757,19 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1070,
+        "x": 1010,
         "y": 780,
         "wires": [
             [],
             [
-                "221ffe720c5802bd"
+                "10e0be515262c959"
             ]
         ]
     },
     {
-        "id": "221ffe720c5802bd",
+        "id": "10e0be515262c959",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "op1": "",
         "op2": "Go",
@@ -2694,18 +2783,18 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1270,
+        "x": 1210,
         "y": 780,
         "wires": [
             [
-                "f0141911eabbd96c"
+                "abedfb9cd94a9cef"
             ]
         ]
     },
     {
-        "id": "f0141911eabbd96c",
+        "id": "abedfb9cd94a9cef",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "spaOverUseGo",
         "func": "flow.set(\"spaOverUse\", \"Go\");\nreturn msg;\n",
         "outputs": 1,
@@ -2713,18 +2802,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1440,
+        "x": 1380,
         "y": 780,
         "wires": [
             [
-                "01a14ae8aa9f7f80"
+                "d21a031f123fe746"
             ]
         ]
     },
     {
-        "id": "da52072829560e75",
+        "id": "49108c7f64ff58ae",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "pauseImmersionHeat",
         "func": "var feed = parseInt(flow.get(\"feedin\"));\n\nif (feed <= -1000){\n    flow.set(\"immersionOverUse\", \"Pause\");\n    msg.payload = \"Pause\";\n}\nreturn msg;\n",
         "outputs": 1,
@@ -2732,18 +2821,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
+        "x": 820,
         "y": 740,
         "wires": [
             [
-                "a11ed7d289855a36"
+                "6bc9c917a79477b4"
             ]
         ]
     },
     {
-        "id": "a11ed7d289855a36",
+        "id": "6bc9c917a79477b4",
         "type": "switch",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "immersionOverUsePauseSwitch",
         "property": "payload",
         "propertyType": "msg",
@@ -2762,19 +2851,19 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1130,
+        "x": 1070,
         "y": 740,
         "wires": [
             [],
             [
-                "4bfc726d69f104d9"
+                "14863b42c8fe99ce"
             ]
         ]
     },
     {
-        "id": "4bfc726d69f104d9",
+        "id": "14863b42c8fe99ce",
         "type": "trigger",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "op1": "",
         "op2": "Go",
@@ -2788,18 +2877,18 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1350,
+        "x": 1290,
         "y": 740,
         "wires": [
             [
-                "91d33683d7a36306"
+                "cfbed0bfb147e64d"
             ]
         ]
     },
     {
-        "id": "91d33683d7a36306",
+        "id": "cfbed0bfb147e64d",
         "type": "function",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "immersionOverUseGo",
         "func": "flow.set(\"immersionOverUse\", \"Go\");\nreturn msg;\n",
         "outputs": 1,
@@ -2807,18 +2896,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1540,
+        "x": 1480,
         "y": 740,
         "wires": [
             [
-                "92aa18dcc3093752"
+                "68c964b00e15d4d4"
             ]
         ]
     },
     {
-        "id": "c9b990d6eed753e0",
+        "id": "36706accf6ba406d",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Go",
         "props": [
             {
@@ -2832,18 +2921,18 @@
         "topic": "",
         "payload": "Go",
         "payloadType": "str",
-        "x": 1370,
+        "x": 1310,
         "y": 700,
         "wires": [
             [
-                "91d33683d7a36306"
+                "cfbed0bfb147e64d"
             ]
         ]
     },
     {
-        "id": "cf4d5a45c95328d3",
+        "id": "1e6115627fc60ca6",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Started!",
         "props": [
             {
@@ -2861,19 +2950,19 @@
         "topic": "",
         "payload": "Go",
         "payloadType": "str",
-        "x": 1420,
+        "x": 1360,
         "y": 400,
         "wires": [
             [
-                "fb8c7080de2231ef"
+                "5aa9470d526035fb"
             ]
         ]
     },
     {
-        "id": "fb8c7080de2231ef",
+        "id": "5aa9470d526035fb",
         "type": "debug",
-        "z": "fb3db93b38ecd3eb",
-        "name": "debug 45",
+        "z": "76fe4d1933966a7e",
+        "name": "debug 49",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2881,21 +2970,26 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1580,
+        "x": 1520,
         "y": 400,
         "wires": []
     },
     {
-        "id": "ace4e7f5d6a8c244",
+        "id": "bfd38f4faf3a960d",
         "type": "server-state-changed",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Immersion Heater Unknown",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 6,
         "outputs": 2,
         "exposeAsEntityConfig": "",
-        "entityId": "switch.immersion_heater_on_r_1f_tp60",
-        "entityIdType": "exact",
+        "entities": {
+            "entity": [
+                "switch.immersion_heater_on_r_1f_tp60"
+            ],
+            "substring": [],
+            "regex": []
+        },
         "outputInitially": true,
         "stateType": "str",
         "ifState": "Unknown",
@@ -2918,19 +3012,19 @@
                 "valueType": "str"
             }
         ],
-        "x": 1060,
+        "x": 1000,
         "y": 260,
         "wires": [
             [
-                "4be272d6d92aa129"
+                "955268ae7dd48051"
             ],
             []
         ]
     },
     {
-        "id": "ea4d1f6c2a3d8528",
+        "id": "c1067d8849c85d39",
         "type": "inject",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "",
         "props": [
             {
@@ -2948,18 +3042,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1010,
+        "x": 950,
         "y": 320,
         "wires": [
             [
-                "0e4a7ca9dd407029"
+                "e9f1c297810f65b6"
             ]
         ]
     },
     {
-        "id": "0e4a7ca9dd407029",
+        "id": "e9f1c297810f65b6",
         "type": "api-current-state",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Immersion Heater State",
         "server": "315411fb.df557e",
         "version": 3,
@@ -2986,37 +3080,41 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 1210,
+        "x": 1150,
         "y": 300,
         "wires": [
             [
-                "e05d9f1e0a5c4f46"
+                "892eab89194eef05"
             ],
             []
         ]
     },
     {
-        "id": "df445a9233051b5b",
+        "id": "ab6742b18a7ce36d",
         "type": "api-call-service",
-        "z": "fb3db93b38ecd3eb",
+        "z": "76fe4d1933966a7e",
         "name": "Power Off",
         "server": "315411fb.df557e",
-        "version": 5,
+        "version": 7,
         "debugenabled": false,
-        "domain": "homeassistant",
-        "service": "turn_off",
+        "action": "homeassistant.turn_off",
+        "floorId": [],
         "areaId": [],
         "deviceId": [],
         "entityId": [
             "switch.spa_power"
         ],
+        "labelId": [],
         "data": "",
         "dataType": "jsonata",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "first",
-        "x": 1840,
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1780,
         "y": 1020,
         "wires": [
             []
